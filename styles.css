@@ -1,0 +1,287 @@
+:root {
+  --bg: #0b0c0e;
+  --surface: #131417;
+  --border: rgba(255,255,255,0.08);
+  --text: #f2f3f5;
+  --text-dim: #9a9ea6;
+  --accent: #6e5bff;
+  --accent-hover: #8272ff;
+  --max-w: 1040px;
+  font-synthesis: none;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fafafa;
+    --surface: #ffffff;
+    --border: rgba(0,0,0,0.08);
+    --text: #16171a;
+    --text-dim: #62666e;
+    --accent: #5a46f0;
+    --accent-hover: #4936d8;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+.wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+header.site {
+  padding: 28px 0 0;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.brand .mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), #ff5b7f);
+  flex-shrink: 0;
+}
+
+nav.links {
+  display: flex;
+  gap: 28px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+nav.links a {
+  text-decoration: none;
+  color: var(--text-dim);
+  transition: color .15s ease;
+}
+
+nav.links a:hover { color: var(--text); }
+
+main {
+  padding-top: 56px;
+}
+
+.hero {
+  padding-bottom: 72px;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero h1 {
+  font-size: clamp(2.1rem, 5vw, 3.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+  max-width: 720px;
+}
+
+.hero p.lede {
+  font-size: 1.15rem;
+  color: var(--text-dim);
+  max-width: 560px;
+  margin: 0;
+}
+
+.section {
+  padding: 72px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.section:last-of-type { border-bottom: none; }
+
+.section h2 {
+  font-size: 1.6rem;
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+}
+
+.section .sub {
+  color: var(--text-dim);
+  margin: 0 0 40px;
+  max-width: 560px;
+}
+
+.apps {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 640px) {
+  .apps { grid-template-columns: 1fr; }
+}
+
+.app-card {
+  display: block;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  background: var(--surface);
+  transition: border-color .15s ease, transform .15s ease;
+}
+
+.app-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.app-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+}
+
+.app-icon.si { background: linear-gradient(135deg, #ff6b6b, #ff5b8a); }
+.app-icon.fd { background: linear-gradient(135deg, #6e5bff, #4d9dff); }
+
+.app-card h3 {
+  font-size: 1.15rem;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+
+.app-card p {
+  color: var(--text-dim);
+  margin: 0 0 16px;
+  font-size: 0.95rem;
+}
+
+.app-card .visit {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+footer.site {
+  padding: 40px 0 56px;
+}
+
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: var(--text-dim);
+}
+
+.footer-links a:hover { color: var(--text); }
+
+/* Legal / contact pages */
+.legal main, .contact main {
+  padding-top: 40px;
+  padding-bottom: 64px;
+}
+
+.legal h1, .contact h1 {
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+}
+
+.legal .updated {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin: 0 0 40px;
+}
+
+.legal h2 {
+  font-size: 1.2rem;
+  margin: 36px 0 12px;
+  letter-spacing: -0.01em;
+}
+
+.legal p, .legal li {
+  color: var(--text-dim);
+  font-size: 0.98rem;
+}
+
+.legal ul { padding-left: 20px; }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+
+@media (max-width: 720px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+.contact-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+  background: var(--surface);
+}
+
+.contact-card h3 {
+  font-size: 0.95rem;
+  margin: 0 0 6px;
+  color: var(--text-dim);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.75rem;
+}
+
+.contact-card a {
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.contact-card a:hover { color: var(--accent); }
