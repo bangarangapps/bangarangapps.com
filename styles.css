@@ -224,6 +224,7 @@ main { padding-top: 0; }
   background: var(--card-bg);
   color: var(--card-ink);
   padding: 30px 28px 26px;
+  flex: 1;
 }
 
 .app-card .mark {
