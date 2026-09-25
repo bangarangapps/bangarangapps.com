@@ -117,11 +117,12 @@ nav.links a:hover { color: var(--ink); }
 main { padding-top: 0; }
 
 .hero {
-  padding: 76px 0 64px;
+  padding-top: 76px;
+  padding-bottom: 64px;
 }
 
 @media (max-width: 480px) {
-  .hero { padding: 44px 0 40px; }
+  .hero { padding-top: 44px; padding-bottom: 40px; }
 }
 
 .hero .eyebrow {
@@ -159,12 +160,13 @@ main { padding-top: 0; }
 }
 
 .section {
-  padding: 64px 0;
+  padding-top: 64px;
+  padding-bottom: 64px;
   border-top: 1px solid var(--border);
 }
 
 @media (max-width: 480px) {
-  .section { padding: 40px 0; }
+  .section { padding-top: 40px; padding-bottom: 40px; }
 }
 
 .section-head {
