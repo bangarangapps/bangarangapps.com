@@ -29,6 +29,8 @@ html, body {
   padding: 0;
   background: var(--bg);
   color: var(--ink);
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
@@ -52,6 +54,10 @@ a { color: inherit; }
   max-width: var(--max-w);
   margin: 0 auto;
   padding: 0 28px;
+}
+
+@media (max-width: 480px) {
+  .wrap { padding: 0 20px; }
 }
 
 header.site {
@@ -112,6 +118,10 @@ main { padding-top: 0; }
 
 .hero {
   padding: 76px 0 64px;
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 44px 0 40px; }
 }
 
 .hero .eyebrow {
@@ -238,6 +248,13 @@ main { padding-top: 0; }
   align-items: center;
   justify-content: space-between;
   background: var(--surface);
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+
+@media (max-width: 480px) {
+  .app-card .card-top { padding: 24px 20px 22px; }
+  .app-card .card-bottom { padding: 14px 20px; }
 }
 
 .app-card .tag {
