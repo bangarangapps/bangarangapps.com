@@ -5,8 +5,9 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 BRANCH="${1:-main}"
 ZONE=4de542e1c453af2c18b5f6448bc3c299
-# shellcheck disable=SC1090
-[ -n "${CLOUDFLARE_API_TOKEN:-}" ] || source ~/.zshrc 2>/dev/null || true
+# the token lives in ~/.zshrc (zsh syntax), so read it through zsh rather than sourcing it here
+CLOUDFLARE_API_TOKEN="${CLOUDFLARE_API_TOKEN:-$(zsh -c 'source ~/.zshrc >/dev/null 2>&1; print -r -- $CLOUDFLARE_API_TOKEN')}"
+[ -n "$CLOUDFLARE_API_TOKEN" ] || { echo "CLOUDFLARE_API_TOKEN not found (see ~/.claude/ACCESS.local.md)" >&2; exit 1; }
 wrangler pages deploy . --project-name=bangarangapps-com --branch="$BRANCH" --commit-dirty=true 2>&1 | grep -E 'Deployment complete|rror'
 [ "$BRANCH" = main ] || exit 0
 purge() { curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE/purge_cache" -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H 'Content-Type: application/json' --data '{"purge_everything":true}' | grep -o '"success":[a-z]*'; }
