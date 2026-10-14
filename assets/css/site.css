@@ -70,8 +70,8 @@ ul { padding: 0; list-style: none; }
 .hdr { position: fixed; inset: 0 0 auto 0; z-index: 50; height: var(--hdr); border-bottom: 1px solid var(--line); }
 .hdr .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .mk { display: inline-flex; align-items: center; color: var(--fg); --sail: var(--accent); text-decoration: none; }
-.mk svg { display: block; height: 20px; width: auto; }
-.foot .mk svg { height: 28px; }
+.mk svg { display: block; height: 25.4px; width: auto; }
+.foot .mk svg { height: 35.6px; }
 .nav { display: flex; align-items: center; gap: clamp(16px, 3vw, 36px); }
 .nav a { font-size: 15px; font-weight: 500; text-decoration: none; padding-block: 12px; color: var(--dim); }
 .nav a:hover { color: var(--fg); }
@@ -80,24 +80,18 @@ ul { padding: 0; list-style: none; }
 @media (max-width: 640px) { .nav .opt { display: none; } }
 
 /* ---------- hero ---------- */
-.hero { position: relative; height: 210vh; height: 210svh; }
+.hero { position: relative; height: 185vh; height: 185svh; }
 .hero-stick {
   position: sticky; top: 0; height: 100vh; height: 100svh;
   display: flex; flex-direction: column; justify-content: flex-end;
   padding-top: calc(var(--hdr) + 24px); padding-bottom: clamp(24px, 4vw, 48px);
 }
-.hero-top { margin-bottom: auto; padding-top: clamp(8px, 2vw, 28px); }
+.hero-top { transform: translateY(calc(var(--hp, 0) * -36px)); margin-bottom: auto; padding-top: clamp(8px, 2vw, 28px); }
 .hero-top .mono { color: var(--dim); }
-.hero-word {
-  font-size: 13vw; font-weight: 900; text-transform: uppercase;
-  line-height: .84; letter-spacing: -.015em; white-space: nowrap;
-  font-variation-settings: "wdth" var(--wd, 62), "wght" 900;
-  padding-bottom: clamp(12px, 2vw, 28px);
-}
-.sa { max-width: none; display: inline-block; height: .688em; width: calc(.688em * 0.8704); margin-inline: .045em; vertical-align: baseline; fill: var(--accent); overflow: visible; }
-.fit-wrap { display: inline-block; }
-.hw { display: inline-block; }
-@media (max-width: 640px) { .hw { display: block; } }
+.hero-word { margin: 0; padding-bottom: clamp(16px, 2.4vw, 32px); color: var(--fg); --sail: var(--accent); }
+.hero-word svg { display: block; width: 100%; height: auto; max-width: none; overflow: visible; }
+.hw-m { display: none !important; }
+@media (max-width: 640px) { .hw-d { display: none !important; } .hw-m { display: block !important; } }
 .hero-meta {
   display: flex; justify-content: space-between; align-items: center; gap: 24px; color: var(--dim);
   border-top: 1px solid var(--line); padding-top: 20px;

@@ -1,19 +1,21 @@
 # Bangarang Apps — brand
 
-**Who:** Bangarang Apps, Inc. A software studio building sharp, modern apps in categories that got comfortable. Current products: SimpleInvite, fdbck.
+**Who:** Bangarang Apps, Inc. An app studio building sharp, modern apps in categories that got comfortable. Current products: SimpleInvite, fdbck.
 
 **Voice:** light, quick, a little mischievous, never smug. Hints that we want to do it better and put some life back into a market, never a word against anyone. Short sentences. No filler sublines. Confident, not cheeky.
-- The name is the nod. Never reference the film, never use pirate/nautical language ("ship" as in ship software is fine).
+- The name is the nod. Never reference the film, never use pirate/nautical language ("ship" as in ship apps is fine).
 - **Never state a headcount** (no "two of us", no "two founders") and **never frame the product line as small or finished** (no "two so far", "just two"). Say "Out now", not "two so far".
 - **Never mention agents, AI, vibe coding or similar anywhere on the site**, including product copy (fdbck's panel is written without it). Hint at modern tooling only: "modern tools", "the newest tools we can get our hands on".
 - **No exclamation mark in the brand.** The wordmark is plain BANGARANG.
-- Never name or criticise an incumbent. "Some corners of software got comfortable" is as pointed as it gets.
+- **Say "apps", never "software".**
+- Never name or criticise an incumbent. "Some app categories got comfortable" is as pointed as it gets.
 - Agentic tooling is part of the story ("a crew of agents"), stated plainly.
 
 **Mark:** the designer's own artwork (a three-panel sail), rebuilt as clean vectors by `tools/construct.py` from `tools/source/mark-original.png` under three rules the owner set: (1) the right-hand edges of the cap and the band lie on ONE straight line (apex to the swoosh's top-right corner), the band's top-right is a sharp corner on that line, and the swoosh's curve starts at that corner; (2) the two gaps are exactly the same width (11 px at source scale) and parallel along their whole length, so the three pieces read as one continuous flow; (3) proportions and curvature come from the original. 11 Bezier segments in total, smooth (tangent-continuous) except at true corners. Not a raw trace: a pixel trace of the 278 px original kept its wobble and was rejected as bumpy. It replaces the middle A of the name. **Never redraw, stretch, skew, split or recolour pieces of it; uniform scale only.** Generated formats in `assets/brand/`: `mark.svg`, `wordmark.svg`, `wordmark-plain.svg`, `lockup-stacked.svg`; plus `/favicon.svg`, `/apple-touch-icon.png`, `/og.png`. Regenerate: `tools/construct.py` then `tools/wordmark.py`, `tools/inject.py`, `tools/board.py`. To change the design, change the constants/anchors at the top of `construct.py` (GAP, corner anchors), not the SVGs.
 
 **Visual:** one stylesheet, color in "worlds". Studio worlds: ink `#0b100d`, forest `#132119`, bone `#eee9da`, glow `#d6f24a`. Product sections wear the product's own identity: SimpleInvite = paper `#efeae0` + persimmon `#d8512f` + Young Serif/Hanken; fdbck = night `#0a0a0b` + amber `#d97706` + Outfit/DM Sans. Studio type: Archivo (variable width axis 62-125), JetBrains Mono for labels.
-- Motion is scroll-linked and horizontal/vertical only. No tilt, no skew, no stacked or overlapping objects, no fake materials (house rule). Reduced motion = static page.
+- Motion is scroll-linked. **The logo itself never changes shape**: no squish, stretch or morph. The hero's motion is a wave of colour that runs outward from the mark through the letters (lime, then settles), plus a slight drift of the statement.
+- Motion rules otherwise: horizontal/vertical only. No tilt, no skew, no stacked or overlapping objects, no fake materials (house rule). Reduced motion = static page.
 - Real imagery only: product shots are 2x captures of the live products (`assets/img`). Re-capture when a product's UI changes.
 - Never Fraunces. No gradients.
 
