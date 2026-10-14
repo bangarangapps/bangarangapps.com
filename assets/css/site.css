@@ -111,7 +111,20 @@ ul { padding: 0; list-style: none; }
   display: flex; justify-content: space-between; align-items: center; gap: 24px; color: var(--dim);
   border-top: 1px solid var(--line); padding-top: 20px;
 }
-.hero-line { margin-top: clamp(20px, 3vw, 40px); font-size: clamp(38px, 5.2vw, 84px); font-weight: 700; line-height: 1.02; letter-spacing: -.025em; max-width: 15ch; text-wrap: balance; color: var(--fg); font-variation-settings: "wdth" 88; }
+.hero-line { margin-top: clamp(20px, 3vw, 40px); font-size: clamp(38px, 5.2vw, 84px); font-weight: 700; line-height: 1.02; letter-spacing: -.025em; color: var(--fg); font-variation-settings: "wdth" 88; }
+.hero-line .ln { display: block; white-space: nowrap; }
+/* the rotating word: a red highlighter box, like selected text. JS rolls it; without JS it simply reads "life". */
+.rw { --rwp: 0em; }
+.rw[data-rw="roll"] { display: inline-block; position: relative; clip-path: inset(0); padding-inline: var(--rwp); transition: width .55s cubic-bezier(.2, .8, .2, 1); }
+.hero-line .rw { --rwp: .1em; background: var(--accent); color: var(--bg); margin-inline: .02em; }
+.rw-s { display: inline-block; visibility: hidden; white-space: nowrap; }
+.rw-i { position: absolute; left: var(--rwp); top: 0; white-space: nowrap; }
+.rw-i.in { animation: rw-in .55s cubic-bezier(.2, .8, .2, 1) both; }
+.rw-i.out { animation: rw-out .55s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes rw-in { from { transform: translateY(105%); opacity: 0; } }
+@keyframes rw-out { to { transform: translateY(-105%); opacity: 0; } }
+@media (max-width: 480px) { .hero-line { font-size: clamp(30px, 9.4vw, 38px); } }
+.rm .rw[data-rw="roll"] { transition: none; }
 .cue { color: var(--dim); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
 .cue:hover { color: var(--fg); }
 .rm .hero, html:not(.js) .hero { height: auto; min-height: 100svh; }

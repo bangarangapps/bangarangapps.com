@@ -41,12 +41,55 @@
           frag.appendChild(s);
         });
         node.replaceChild(frag, c);
-      } else if (c.nodeType === 1) split(c);
+      } else if (c.nodeType === 1 && !c.hasAttribute('data-rw')) split(c);
     });
   }
   const mfText = mf && mf.querySelector('[data-words]');
   let words = [];
   if (mfText && !reduce) { split(mfText); words = $$('.w', mfText); }
+
+  /* ---------- the rotating word ----------
+     One word, shared by the hero, the manifesto and the strip. Starts as "life", then a shuffled run through the list.
+     The hero rolls it live (when on screen). Everywhere else swaps only while off screen, so nothing reflows under your eyes. */
+  const RW_WORDS = ['spark', 'zest', 'zing', 'snap', 'kick', 'buzz', 'pulse', 'charm', 'flair', 'verve', 'nerve', 'soul', 'play', 'joy', 'wit'];
+  const rwEls = $$('[data-rw]');
+  if (rwEls.length && !reduce) {
+    const vis = new Map();
+    const io = new IntersectionObserver((es) => es.forEach((e) => vis.set(e.target, e.isIntersecting)));
+    rwEls.forEach((el) => {
+      vis.set(el, false); io.observe(el);
+      if (el.dataset.rw === 'roll') {
+        const w = el.textContent;
+        el.innerHTML = '';
+        const sz = d.createElement('span'); sz.className = 'rw-s'; sz.setAttribute('aria-hidden', 'true'); sz.textContent = w;
+        const it = d.createElement('span'); it.className = 'rw-i'; it.textContent = w;
+        el.append(sz, it);
+      }
+    });
+    const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const k = Math.floor(Math.random() * (i + 1)); [a[i], a[k]] = [a[k], a[i]]; } return a; };
+    let queue = [], current = 'life';
+    const nextWord = () => { if (!queue.length) queue = shuffle(RW_WORDS.filter((x) => x !== current)); return queue.pop(); };
+    const pad = (el) => 2 * parseFloat(getComputedStyle(el).paddingLeft || 0);
+    function roll(el, word) {
+      const sz = el.querySelector('.rw-s'), old = el.querySelector('.rw-i:not(.out)');
+      el.style.width = el.getBoundingClientRect().width + 'px';
+      void el.offsetWidth;
+      sz.textContent = word;
+      el.style.width = (sz.offsetWidth + pad(el)) + 'px';
+      if (old) { old.classList.add('out'); old.setAttribute('aria-hidden', 'true'); old.addEventListener('animationend', () => old.remove(), { once: true }); }
+      const it = d.createElement('span'); it.className = 'rw-i in'; it.textContent = word; el.appendChild(it);
+    }
+    function swap() {
+      current = nextWord();
+      rwEls.forEach((el) => {
+        if (el.dataset.rw === 'roll') {
+          if (vis.get(el)) roll(el, current);
+          else { el.style.width = ''; el.querySelector('.rw-s').textContent = current; el.querySelectorAll('.rw-i').forEach((n, i, all) => { if (i < all.length - 1) n.remove(); }); el.querySelector('.rw-i').textContent = current; el.querySelector('.rw-i').classList.remove('in'); }
+        } else if (!vis.get(el)) el.textContent = current;
+      });
+    }
+    setTimeout(function loop() { if (!d.hidden) swap(); setTimeout(loop, 3400); }, 3200);
+  }
 
   /* ---------- the loop ---------- */
   let queued = false;

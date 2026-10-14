@@ -33,3 +33,7 @@ Module u = 50 units: cap 14u (700), stem 3u (150), mark 18u (900) tall = 6 stems
 
 ## Hero sail
 One oversized sail (the display mark, `svg.hero-sail`, kept in sync by `tools/inject.py`) sits behind the hero type at 11% opacity in `--accent`, 94svh tall, bleeding 30% off the right edge. Static, `aria-hidden`, behind the text (`z-index:0`). The hero stage is `overflow: clip` so it never creates sideways scroll. Do not animate it and do not repeat it elsewhere.
+
+## The rotating word
+The one word in our line rotates. "Apps with a little more **life** in them." (hero), "...deserve a little **life**:" (manifesto) and "More **life**." (strip) all share one current word. It starts as "life" on every load, then runs a shuffled pass through: spark, zest, zing, snap, kick, buzz, pulse, charm, flair, verve, nerve, soul, play, joy, wit. Hero: rolls live, in a red highlighter box (selection style, ink text), every 3.4 s while on screen. Manifesto and strip: swap only while off screen, so text never reflows in view. Reduced motion or no JS: stays "life". Static metadata (title, meta, OG) stays "life".
+Rules for new words: a mass noun that fits both "a little more ___ in them" and "a little ___:" and "More ___."; five letters or fewer (phone hero line must stay on one line at 320 px; "charm" is the widest); light, quick, a little mischievous, never smug; no pirate/nautical words; no tech/AI words. Edit the list in `assets/js/site.js` (`RW_WORDS`).
