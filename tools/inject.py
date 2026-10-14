@@ -17,7 +17,7 @@ for name in ['index.html', 'privacy/index.html', 'terms/index.html', 'contact/in
     p.write_text(s)
 # header/footer wordmark height: keep the LETTERS the same size as before the taller viewBox
 c = R/'assets/css/site.css'; t = c.read_text()
-k = met['vb_h'] / 712
+k = met['vb_h'] / met.get('vb_ref', 712)
 t = re.sub(r'(\.mk svg \{[^}]*?height: )[^;]+(;)', lambda m: f'{m.group(1)}{20*k:.1f}px{m.group(2)}', t, count=1)
 t = re.sub(r'(\.foot \.mk svg \{ height: )[^;]+(;)', lambda m: f'{m.group(1)}{28*k:.1f}px{m.group(2)}', t, count=1)
 c.write_text(t); print('injected; vb_h', met['vb_h'], 'k', round(k, 3))
