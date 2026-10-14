@@ -283,7 +283,7 @@ a{{color:inherit}}
       <p class="say" style="margin-top:14px">Out now.</p>
       <p class="say" style="margin-top:14px">We read everything.</p>
       <h3 style="margin-top:36px">The rotating word</h3>
-      <p class="dim" style="margin-top:10px;font-size:15px">&ldquo;Apps with a little more <span style="background:var(--red);color:var(--ink);padding:0 .15em">life</span> in them.&rdquo; The word rotates through the list below, everywhere it appears, and starts on a random one at every load. Highlight is the red selection box with ink text.</p>
+      <p class="dim" style="margin-top:10px;font-size:15px">&ldquo;Apps with a little more <span style="background:var(--red);color:var(--ink);padding:0 .15em">life</span> in them.&rdquo; The word rotates through the list below, everywhere it appears, and starts on a random one at every load, drawn from a shuffled deck so nothing repeats until all have been shown. Highlight is the red selection box with ink text.</p>
       <p class="num" style="margin-top:14px;font-size:13px;line-height:1.9;letter-spacing:.04em">life &middot; spark &middot; zest &middot; zing &middot; snap &middot; kick &middot; buzz &middot; pulse &middot; charm &middot; flair &middot; verve &middot; nerve &middot; soul &middot; play &middot; joy &middot; wit</p>
       <p class="dim" style="margin-top:10px;font-size:15px">New words: a mass noun, five letters or fewer, light and a little mischievous, never smug, nothing nautical or technical.</p></div>
     <div><h3>Rules</h3>

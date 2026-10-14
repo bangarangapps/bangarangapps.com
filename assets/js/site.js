@@ -54,8 +54,22 @@
   const RW_WORDS = ['life', 'spark', 'zest', 'zing', 'snap', 'kick', 'buzz', 'pulse', 'charm', 'flair', 'verve', 'nerve', 'soul', 'play', 'joy', 'wit'];
   const rwEls = $$('[data-rw]');
   const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const k = Math.floor(Math.random() * (i + 1)); [a[i], a[k]] = [a[k], a[i]]; } return a; };
-  let queue = shuffle(RW_WORDS.slice()), current = queue.pop();
-  rwEls.forEach((el) => { el.textContent = current; });            // random starting word on every load
+  /* A shuffled deck, remembered across reloads, so no word repeats until all of them have been shown. */
+  const DECK = 'bg-rw-deck';
+  let queue = [], current = '';
+  try { const q = JSON.parse(localStorage.getItem(DECK) || '[]'); if (Array.isArray(q)) queue = q.filter((x) => RW_WORDS.includes(x)); } catch (e) { /* storage blocked: plain random */ }
+  const save = () => { try { localStorage.setItem(DECK, JSON.stringify(queue)); } catch (e) { /* ignore */ } };
+  const draw = () => {
+    if (!queue.length) {
+      queue = shuffle(RW_WORDS.filter((x) => x !== current));
+      if (current) queue = queue.filter((x) => x !== current);       // never repeat the word just shown across a deck boundary
+    }
+    current = queue.pop(); save(); return current;
+  };
+  try { current = localStorage.getItem(DECK + '-last') || ''; } catch (e) { /* ignore */ }
+  draw();
+  try { localStorage.setItem(DECK + '-last', current); } catch (e) { /* ignore */ }
+  rwEls.forEach((el) => { el.textContent = current; });            // random start on every load, from the deck
   if (rwEls.length && !reduce) {
     const vis = new Map();
     const io = new IntersectionObserver((es) => es.forEach((e) => vis.set(e.target, e.isIntersecting)));
@@ -69,7 +83,7 @@
         el.append(sz, it);
       }
     });
-    const nextWord = () => { if (!queue.length) queue = shuffle(RW_WORDS.filter((x) => x !== current)); return queue.pop(); };
+    const nextWord = () => { const w = draw(); try { localStorage.setItem(DECK + '-last', w); } catch (e) { /* ignore */ } return w; };
     const pad = (el) => 2 * parseFloat(getComputedStyle(el).paddingLeft || 0);
     function roll(el, word) {
       const sz = el.querySelector('.rw-s'), old = el.querySelector('.rw-i:not(.out)');
@@ -81,7 +95,7 @@
       const it = d.createElement('span'); it.className = 'rw-i in'; it.textContent = word; el.appendChild(it);
     }
     function swap() {
-      current = nextWord();
+      nextWord();
       rwEls.forEach((el) => {
         if (el.dataset.rw === 'roll') {
           if (vis.get(el)) roll(el, current);
