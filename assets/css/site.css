@@ -17,6 +17,9 @@
   --red: #ff1f2d;
 }
 
+/* anchor jumps land flush at the top so the header takes the target section's world; padding below keeps content clear of it */
+main > section[id] { scroll-margin-top: calc(var(--hdr) * -1); }
+
 /* ---------- worlds ---------- */
 [data-world] { background: var(--bg); color: var(--fg); }
 [data-world="ink"] {
@@ -129,7 +132,7 @@ ul { padding: 0; list-style: none; }
 .strip-row .o { color: transparent; -webkit-text-stroke: clamp(1px, .18vw, 3px) var(--fg); }
 
 /* ---------- section intro ---------- */
-.intro { padding-block: clamp(56px, 8vw, 120px) clamp(24px, 4vw, 48px); }
+.intro { padding-block: max(calc(var(--hdr) + 20px), clamp(56px, 8vw, 120px)) clamp(24px, 4vw, 48px); }
 .xl {
   font-size: clamp(54px, 11vw, 188px); font-weight: 900; text-transform: uppercase;
   line-height: .86; letter-spacing: -.02em; font-variation-settings: "wdth" var(--wd, 82), "wght" 900;
