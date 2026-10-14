@@ -6,6 +6,7 @@ def svg(name, cls=''):
     s = re.sub(r' style="[^"]*"', '', (b/name).read_text(), count=1)
     return s.replace('<svg ', f'<svg class="{cls}" ', 1)
 M, WM, WP, LS = svg('mark.svg', 'm'), svg('wordmark.svg', 'wm'), svg('wordmark-plain.svg', 'wm'), svg('lockup-stacked.svg', 'ls')
+MS, WS = svg('mark-small.svg', 'm'), svg('wordmark-small.svg', 'wm')
 src = base64.b64encode((R/'tools/source/mark-original.png').read_bytes()).decode()
 met = json.loads((R/'tools/metrics.json').read_text())
 tile = lambda cls, inner, label='': f'<figure class="tile {cls}">{inner}<figcaption>{label}</figcaption></figure>'
@@ -45,8 +46,13 @@ ul{{margin:0;padding-left:20px}} li{{margin-bottom:8px;color:var(--dim)}} li b{{
 <section><div class="wrap"><h2>Stacked lockup (plain A beside the mark, so it isn't repeated)</h2>
 <div class="grid">{tile("t-ink", LS, "on ink")}{tile("t-bone", LS, "on bone")}{tile("t-glow", LS, "on glow")}</div></div></section>
 
+<section><div class="wrap"><h2>Two optical cuts: display and small</h2>
+<div class="two"><div class="grid">{tile("t-ink", M, "display mark: 11 px gaps")}{tile("t-ink", MS, "small mark: 22 px gaps")}</div>
+<div><ul><li><b>Display</b> is the artwork as drawn. Use it above about 40 px: hero, print, merch.</li><li><b>Small</b> doubles the gaps between the three pieces so they survive at 16 to 36 px, with looser letter-spacing and more air to the right of the mark so the R no longer crowds it. Used for the header, footer and favicon.</li><li>Same drawing, same flow and right-hand line; only the gap width and spacing change.</li></ul></div></div>
+<div class="grid" style="margin-top:14px;grid-template-columns:1fr 1fr">{tile("t-ink", WM, "wordmark, display")}{tile("t-ink", WS, "wordmark, small")}</div></div></section>
+
 <section><div class="wrap"><h2>Small sizes: favicon, app icon, avatar</h2><div class="sizes">{favs}</div>
-<p class="mono" style="margin-top:14px">16 / 32 / 48 / 64 / 96 / 180 px. The gaps between the three pieces close up below about 24 px; the silhouette still reads.</p></div></section>
+<p class="mono" style="margin-top:14px">16 / 32 / 48 / 64 / 96 / 180 px, small cut. At 32 px all three pieces separate; at 16 px it reads as a sail silhouette with stripes.</p></div></section>
 
 <section><div class="wrap"><h2>One colour: any garment, any ground</h2>
 <div class="grid">{tile("t-bone", M, "ink on bone")}{tile("t-glow", M, "ink on glow")}{tile("t-ink", M, "glow on ink")}{tile("t-pers", M, "white on persimmon")}{tile("t-white", M, "ink on white")}{tile("t-forest", M, "glow on forest")}</div></div></section>
@@ -58,6 +64,6 @@ ul{{margin:0;padding-left:20px}} li{{margin-bottom:8px;color:var(--dim)}} li b{{
 <section><div class="wrap"><div class="two"><div><h2>Colour</h2><ul><li><b>Ink</b> #0b100d</li><li><b>Forest</b> #132119</li><li><b>Bone</b> #eee9da</li><li><b>Glow</b> #d6f24a. The mark's colour on dark grounds.</li></ul><p style="margin-top:14px">Wordmark type is Gabarito Bold (SIL OFL), cap height normalised, tracking 0. The mark is the only coloured letter.</p></div>
 <div><h2>Rules</h2><ul><li>Clear space: a quarter of the mark's height on every side.</li><li>Minimum: mark 16 px / 6 mm; wordmark 90 px / 25 mm wide.</li><li>One colour, or the mark in accent with letters in ink/bone. No gradients, outlines, shadows, rotation or skew.</li><li>Never redraw or re-typeset. Re-run the generator.</li></ul></div></div></div></section>
 
-<section><div class="wrap"><h2>Files (repo: assets/brand)</h2><ul class="mono"><li>mark.svg</li><li>wordmark.svg · wordmark-plain.svg</li><li>lockup-stacked.svg</li><li>/favicon.svg · /apple-touch-icon.png · /og.png</li></ul></div></section>'''
+<section><div class="wrap"><h2>Files (repo: assets/brand)</h2><ul class="mono"><li>mark.svg · mark-small.svg</li><li>wordmark.svg · wordmark-small.svg · wordmark-plain.svg</li><li>lockup-stacked.svg</li><li>/favicon.svg · /apple-touch-icon.png · /og.png</li></ul></div></section>'''
 (R/'docs'/'brand-board.html').write_text(html)
 print(len(html))

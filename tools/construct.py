@@ -23,7 +23,10 @@ from skimage.measure import find_contours
 
 ROOT = pathlib.Path(__file__).resolve().parent
 SRC = ROOT/'source'/'mark-original.png'
-GAP = 11.0          # source px: both gaps. (original: 10.9 and 11.3)
+def _arg(name, default):
+    return type(default)(sys.argv[sys.argv.index(name)+1]) if name in sys.argv else default
+GAP = _arg('--gap', 11.0)       # source px: both gaps. (original: 10.9 and 11.3). Larger = the small-size cut.
+OUT = _arg('--out', 'mark-path.json')
 SIGMA = 6.0
 SCALE = 8
 SPAN, CORNER_DEG = 6, 35
@@ -260,7 +263,7 @@ d = dstr(shapes, SCALE)
 allp = np.vstack([chain(s, 80) for s in shapes])*SCALE
 bbox = [float(allp[:, 0].min()), float(allp[:, 1].min()), float(allp[:, 0].max()), float(allp[:, 1].max())]
 n_seg = sum(len(s) for s in shapes)
-(ROOT/'mark-path.json').write_text(json.dumps({'d': d, 'w': W*SCALE, 'h': H*SCALE, 'bbox': bbox, 'anchors': n_seg,
+(ROOT/OUT).write_text(json.dumps({'d': d, 'w': W*SCALE, 'h': H*SCALE, 'bbox': bbox, 'anchors': n_seg,
     'gap': GAP, 'line': [A_.tolist(), S_.tolist()]}))
 
 if VERBOSE:
