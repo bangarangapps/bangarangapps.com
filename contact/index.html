@@ -2,50 +2,66 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Contact — Bangarang Apps</title>
-<meta name="description" content="Get in touch with Bangarang Apps.">
-<link rel="stylesheet" href="/styles.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Say hello</title>
+<meta name="description" content="Contact Bangarang Apps. General, help and support inboxes.">
+<meta name="theme-color" content="#d6f24a">
+<link rel="canonical" href="https://bangarangapps.com/contact/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bangarang Apps">
+<meta property="og:title" content="Say hello">
+<meta property="og:description" content="Contact Bangarang Apps. General, help and support inboxes.">
+<meta property="og:url" content="https://bangarangapps.com/contact/">
+<meta property="og:image" content="https://bangarangapps.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/css/site.css?v=4">
+<script>
+  document.documentElement.classList.add('js');
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('rm');
+</script>
+<script src="/assets/js/site.js?v=4" defer></script>
 </head>
-<body class="contact">
-<header class="site">
-  <div class="wrap nav">
-    <a href="/" class="brand">Bangarang <span class="serif">Apps</span></a>
-    <nav class="links">
-      <a href="https://simpleinvite.app">SimpleInvite</a>
-      <a href="https://fdbck.app">fdbck</a>
-      <a href="/contact">Contact</a>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr" data-world="glow">
+  <div class="wrap">
+    <a class="mk" href="/" aria-label="Bangarang Apps, home">Bangarang<i>!</i></a>
+    <nav class="nav" aria-label="Primary">
+      <a class="opt" href="/#apps">Apps</a>
+      <a class="opt" href="/#crew">How we work</a>
+      <a class="cta" href="/contact/">Say hello</a>
     </nav>
   </div>
 </header>
-<main>
-  <div class="wrap">
-    <h1>Contact</h1>
-    <p style="color:var(--ink-dim); max-width:520px;">Reach the right inbox depending on what you need.</p>
-    <div class="contact-grid">
-      <div class="contact-card">
-        <h3>General</h3>
-        <a href="mailto:contact@bangarangapps.com">contact@bangarangapps.com</a>
-      </div>
-      <div class="contact-card">
-        <h3>Help</h3>
-        <a href="mailto:help@bangarangapps.com">help@bangarangapps.com</a>
-      </div>
-      <div class="contact-card">
-        <h3>Support</h3>
-        <a href="mailto:support@bangarangapps.com">support@bangarangapps.com</a>
+<main id="main">
+  <section class="hello" data-world="glow" style="padding-top:calc(var(--hdr) + clamp(48px,8vw,112px))">
+    <div class="wrap">
+      <h1 class="xl" data-wdth-view="62,125"><span class="fit-wrap">Say hello.</span></h1>
+      <p class="sub">Ideas, questions, a better way to do something. We read everything.</p>
+      <div class="mails">
+        <a class="mail" href="mailto:contact@bangarangapps.com"><span class="mono">General</span><span class="addr">contact@bangarangapps.com</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 12.5L12.5 3.5M12.5 3.5H5.5M12.5 3.5V10.5" stroke="currentColor" stroke-width="1.8"/></svg></a>
+        <a class="mail" href="mailto:help@bangarangapps.com"><span class="mono">Need a hand?</span><span class="addr">help@bangarangapps.com</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 12.5L12.5 3.5M12.5 3.5H5.5M12.5 3.5V10.5" stroke="currentColor" stroke-width="1.8"/></svg></a>
+        <a class="mail" href="mailto:support@bangarangapps.com"><span class="mono">Something broken?</span><span class="addr">support@bangarangapps.com</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 12.5L12.5 3.5M12.5 3.5H5.5M12.5 3.5V10.5" stroke="currentColor" stroke-width="1.8"/></svg></a>
       </div>
     </div>
-  </div>
+  </section>
 </main>
-<footer class="site">
-  <div class="wrap footer-row">
-    <span>© 2026 Bangarang Apps, Inc.</span>
-    <div class="footer-links">
-      <a href="/privacy">Privacy</a>
-      <a href="/terms">Terms</a>
-      <a href="/contact">Contact</a>
+<footer class="foot" data-world="ink">
+  <div class="wrap foot-grid">
+    <div>
+      <a class="mk" href="/">Bangarang<i>!</i></a>
+      <p class="small">&copy; 2026 Bangarang Apps, Inc. Made by hand, with a little help.</p>
     </div>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/contact/">Contact</a>
+    </nav>
   </div>
 </footer>
 </body>
