@@ -49,28 +49,21 @@
   let words = [];
   if (mfText && !reduce) { split(mfText); words = $$('.w', mfText); }
 
-  /* The sail A: sails fill and ease as you scroll. Geometry mirrors tools/wordmark.py. */
-  const SL = { O: [[47,0],[24,22],[3,60],[0,100]], I: [[50,0],[40,30],[34,66],[30,100]], cuts: [[0,.47],[.53,1]] };
-  const SR = { O: [[53,0],[80,22],[99,56],[100,100]], I: [[50,0],[60,30],[67,66],[70,100]], cuts: [[0,.30],[.37,.66],[.73,1]] };
+  /* The sails: wind fills the main and works the jib as you scroll. Geometry mirrors tools/wordmark.py. */
+  const JIB = [[45, 6], [32, 42], [16, 74], [0, 100]];      // luff curve, head -> tack
+  const MAIN = [[100, 100], [101, 66], [86, 30], [52, 0]];  // leech curve, clew -> head
   const mix = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
-  const billow = (c, b) => c.map((p, i) => {
-    if (i === 0 || i === 3) return p;
+  const bendCtl = (c, b) => [1, 2].map((i) => {
     const s = mix(c[0], c[3], i / 3);
-    return [s[0] + (p[0] - s[0]) * b, s[1] + (p[1] - s[1]) * b];
+    return [s[0] + (c[i][0] - s[0]) * b, s[1] + (c[i][1] - s[1]) * b];
   });
   const pt = (p) => p[0].toFixed(2) + ' ' + p[1].toFixed(2);
-  function sailD(leg, b) {
-    const O = billow(leg.O, b), I = billow(leg.I, b);
-    return leg.cuts.map(([f0, f1]) => {
-      const c0 = O.map((p, i) => mix(p, I[i], f0)), c1 = O.map((p, i) => mix(p, I[i], f1));
-      return `M${pt(c0[0])}C${pt(c0[1])} ${pt(c0[2])} ${pt(c0[3])}L${pt(c1[3])}C${pt(c1[2])} ${pt(c1[1])} ${pt(c1[0])}Z`;
-    });
-  }
   const sailPaths = hero ? $$('.sa path', hero) : [];
   function setSail(b) {
-    if (!sailPaths.length) return;
-    const ds = sailD(SL, b).concat(sailD(SR, b));
-    sailPaths.forEach((p, i) => { if (ds[i]) p.setAttribute('d', ds[i]); });
+    if (sailPaths.length < 2) return;
+    const j = bendCtl(JIB, b), m = bendCtl(MAIN, b);
+    sailPaths[0].setAttribute('d', `M45 6C${pt(j[0])} ${pt(j[1])} 0 100L37 100Z`);
+    sailPaths[1].setAttribute('d', `M52 0L52 100L100 100C${pt(m[0])} ${pt(m[1])} 52 0Z`);
   }
 
   /* ---------- the loop ---------- */
@@ -100,7 +93,7 @@
       if (r.bottom > 0) {
         const p = clamp(-r.top / Math.max(1, r.height - vh));
         fit(hero.querySelector('[data-fit]'), lerp(62, 125, ease(p)));
-        setSail(1 + 0.3 * Math.sin(p * Math.PI * 3));
+        setSail(1 + 0.4 * Math.sin(p * Math.PI * 3));
       }
     }
 
