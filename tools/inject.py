@@ -6,7 +6,7 @@ R = pathlib.Path(__file__).resolve().parent.parent
 sym = (R/'tools/wm-symbol.html').read_text(); use = (R/'tools/wm-use.html').read_text()
 hd = (R/'tools/hero-d.html').read_text(); hm = (R/'tools/hero-m.html').read_text()
 met = json.loads((R/'tools/metrics.json').read_text())
-for name in ['index.html', 'privacy/index.html', 'terms/index.html', 'contact/index.html', '404.html']:
+for name in ['index.html', 'privacy/index.html', 'terms/index.html', 'contact/index.html', 'refunds/index.html', '404.html']:
     p = R/name; s = p.read_text()
     s, n1 = re.subn(r'<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="wm".*?</symbol></svg>', lambda m: sym, s, flags=re.S)
     s, n2 = re.subn(r'<svg viewBox="[^"]*" role="img" aria-label="Bangarang"><use href="#wm"/></svg>', lambda m: use, s)
