@@ -22,7 +22,6 @@
     const wrap = el.querySelector('.fit-wrap');
     if (!wrap) return;
     el.style.setProperty('--wd', wd.toFixed(2));
-    el.style.setProperty('--aw', (wd <= 100 ? lerp(0.53, 0.759, (wd - 62) / 38) : lerp(0.759, 0.938, (wd - 100) / 25)).toFixed(4));
     el.style.fontSize = '100px';
     const w = wrap.getBoundingClientRect().width;
     if (w > 0) el.style.fontSize = (100 * el.clientWidth / w).toFixed(2) + 'px';
@@ -48,23 +47,6 @@
   const mfText = mf && mf.querySelector('[data-words]');
   let words = [];
   if (mfText && !reduce) { split(mfText); words = $$('.w', mfText); }
-
-  /* The sails: wind fills the main and works the jib as you scroll. Geometry mirrors tools/wordmark.py. */
-  const JIB = [[45, 6], [32, 42], [16, 74], [0, 100]];      // luff curve, head -> tack
-  const MAIN = [[100, 100], [101, 66], [86, 30], [52, 0]];  // leech curve, clew -> head
-  const mix = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
-  const bendCtl = (c, b) => [1, 2].map((i) => {
-    const s = mix(c[0], c[3], i / 3);
-    return [s[0] + (c[i][0] - s[0]) * b, s[1] + (c[i][1] - s[1]) * b];
-  });
-  const pt = (p) => p[0].toFixed(2) + ' ' + p[1].toFixed(2);
-  const sailPaths = hero ? $$('.sa path', hero) : [];
-  function setSail(b) {
-    if (sailPaths.length < 2) return;
-    const j = bendCtl(JIB, b), m = bendCtl(MAIN, b);
-    sailPaths[0].setAttribute('d', `M45 6C${pt(j[0])} ${pt(j[1])} 0 100L37 100Z`);
-    sailPaths[1].setAttribute('d', `M52 0L52 100L100 100C${pt(m[0])} ${pt(m[1])} 52 0Z`);
-  }
 
   /* ---------- the loop ---------- */
   let queued = false;
@@ -93,7 +75,6 @@
       if (r.bottom > 0) {
         const p = clamp(-r.top / Math.max(1, r.height - vh));
         fit(hero.querySelector('[data-fit]'), lerp(62, 125, ease(p)));
-        setSail(1 + 0.4 * Math.sin(p * Math.PI * 3));
       }
     }
 
