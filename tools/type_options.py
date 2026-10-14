@@ -85,7 +85,7 @@ for i, (slug, file, wght, label, group, note, track) in enumerate(OPTIONS):
     body, total = wordmark(gs, cm, s, track)
     vb = f'-4 0 {total:.0f} {BASE+OVER+14:.0f}'
     svg = f'<svg viewBox="{vb}" role="img" aria-label="Bangarang in {label}">{body}</svg>'
-    (outdir/f'{slug}.svg').write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{vb}" style="color:#eee9da;--sail:#d6f24a">{body}</svg>')
+    (outdir/f'{slug}.svg').write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{vb}" style="color:#eee9da;--sail:#ff1f2d">{body}</svg>')
     cards.append((i, slug, label, group, wght, note, svg))
     print(f'{i:2} {label:28} wght {wght}  width {total:.0f}')
 
@@ -100,7 +100,7 @@ html = f'''<title>Wordmark Options</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-:root{{--ink:#0b100d;--bone:#eee9da;--glow:#d6f24a;--dim:rgba(238,233,218,.68);--line:rgba(238,233,218,.18);color-scheme:dark}}
+:root{{--ink:#0c0a0a;--bone:#eee9da;--glow:#ff1f2d;--dim:rgba(238,233,218,.68);--line:rgba(238,233,218,.18);color-scheme:dark}}
 *{{box-sizing:border-box}} body{{margin:0;background:var(--ink);color:var(--bone);font-family:"Archivo",system-ui,sans-serif;font-size:16px;line-height:1.5}}
 .wrap{{width:min(100% - 32px,1280px);margin-inline:auto;padding-block:clamp(28px,5vw,64px)}}
 h1{{margin:0 0 10px;font-size:clamp(34px,6vw,72px);font-weight:800;letter-spacing:-.02em;line-height:1}} .lead{{max-width:62ch;color:var(--dim);margin:0 0 28px}}
@@ -116,7 +116,7 @@ h1{{margin:0 0 10px;font-size:clamp(34px,6vw,72px);font-weight:800;letter-spacin
 svg{{display:block;width:100%;height:auto}} .hdr svg{{width:100%}}
 </style>
 <div class="wrap"><h1>Wordmark options</h1>
-<p class="lead">Eighteen typefaces plus the current one, each rebuilt as real outlines with your mark as the middle A at the same size and equal overhang. All Google Fonts (SIL OFL, free for logo use). Weights are stepped back from 900 to semibold or bold, or regular for the serif. Each card shows ink, bone, lime and header size. Most of the grotesques look alike at this weight; the four marked Shortlist are the ones that are actually different and would be hard to mistake for anyone else.</p>
+<p class="lead">Eighteen typefaces plus the current one, each rebuilt as real outlines with your mark as the middle A at the same size and equal overhang. All Google Fonts (SIL OFL, free for logo use). Weights are stepped back from 900 to semibold or bold, or regular for the serif. Each card shows ink, bone, red and header size. Most of the grotesques look alike at this weight; the four marked Shortlist are the ones that are actually different and would be hard to mistake for anyone else.</p>
 <div class="grid">{''.join(card(c) for c in cards)}</div></div>'''
 (ROOT/'docs'/'wordmark-options.html').write_text(html)
 print('wrote docs/wordmark-options.html', len(html))

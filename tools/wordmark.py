@@ -105,7 +105,7 @@ Wm = round(max(w1, w2)); Hm = round(y2 + max(OVERSHOOT, DROP) + 6)
 # ---------------- standalone brand files ----------------
 B = ROOT/'assets'/'brand'; B.mkdir(parents=True, exist_ok=True)
 NS = 'xmlns="http://www.w3.org/2000/svg"'
-INK, BONE, GLOW = '#0b100d', '#eee9da', '#d6f24a'
+INK, BONE, GLOW = '#0c0a0a', '#eee9da', '#ff1f2d'   # GLOW = the brand red
 PAD = 14
 def mark_svg(c):
     return f'<svg {NS} viewBox="{-PAD} {-PAD} {c.BW+2*PAD:.2f} {c.BH+2*PAD:.2f}" fill="currentColor" role="img" aria-label="Bangarang">{c.path}</svg>'
