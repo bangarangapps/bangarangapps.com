@@ -49,10 +49,13 @@
   if (mfText && !reduce) { split(mfText); words = $$('.w', mfText); }
 
   /* ---------- the rotating word ----------
-     One word, shared by the hero, the manifesto and the strip. Starts as "life", then a shuffled run through the list.
+     One word, shared by the hero, the manifesto and the strip. Random start on every load, then a shuffled run through the list.
      The hero rolls it live (when on screen). Everywhere else swaps only while off screen, so nothing reflows under your eyes. */
-  const RW_WORDS = ['spark', 'zest', 'zing', 'snap', 'kick', 'buzz', 'pulse', 'charm', 'flair', 'verve', 'nerve', 'soul', 'play', 'joy', 'wit'];
+  const RW_WORDS = ['life', 'spark', 'zest', 'zing', 'snap', 'kick', 'buzz', 'pulse', 'charm', 'flair', 'verve', 'nerve', 'soul', 'play', 'joy', 'wit'];
   const rwEls = $$('[data-rw]');
+  const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const k = Math.floor(Math.random() * (i + 1)); [a[i], a[k]] = [a[k], a[i]]; } return a; };
+  let queue = shuffle(RW_WORDS.slice()), current = queue.pop();
+  rwEls.forEach((el) => { el.textContent = current; });            // random starting word on every load
   if (rwEls.length && !reduce) {
     const vis = new Map();
     const io = new IntersectionObserver((es) => es.forEach((e) => vis.set(e.target, e.isIntersecting)));
@@ -66,8 +69,6 @@
         el.append(sz, it);
       }
     });
-    const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const k = Math.floor(Math.random() * (i + 1)); [a[i], a[k]] = [a[k], a[i]]; } return a; };
-    let queue = [], current = 'life';
     const nextWord = () => { if (!queue.length) queue = shuffle(RW_WORDS.filter((x) => x !== current)); return queue.pop(); };
     const pad = (el) => 2 * parseFloat(getComputedStyle(el).paddingLeft || 0);
     function roll(el, word) {
