@@ -11,7 +11,7 @@ import proportions as P
 ROOT = P.ROOT
 INK, BONE, RED = '#0c0a0a', '#eee9da', '#ff1f2d'
 U = 50.0                                 # module: cap = 14u, stem = 3u
-SRC = 'assets/brand/wordmark.svg'
+SRC = 'docs/lockup-before/wordmark.svg'     # frozen pre-change geometry (the lockup as it was before 2026-10-14); the shipped file now IS the refined one
 
 # ------------------------------------------------------------------ measure
 vb, els = P.load(ROOT / SRC)
@@ -196,21 +196,21 @@ rows = []
 for (lab, v) in cur_pairs:
     rows.append((lab, v, 'm' if 'mark' in lab else 'l'))
 rows_ref = [(lab, v, 'm' if 'mark' in lab else 'l') for lab, v in ref_pairs]
-BARS_CUR = bars(rows, 'Optical gap between neighbours, current')
-BARS_REF = bars(rows_ref, 'Optical gap between neighbours, refined')
+BARS_CUR = bars(rows, 'Optical gap between neighbours, before')
+BARS_REF = bars(rows_ref, 'Optical gap between neighbours, shipped')
 BARS_BENCH = bars([(lab, v, 'b') for lab, v in bench_pairs], 'Optical gap with the typeface\'s own A')
 
 # ---- figure 4: current vs refined lockups
 def full(inner, v, cap=''):
     return (f'<figure class="lk"><svg viewBox="{v[0]} {v[1]} {v[2]} {v[3]}" role="img" aria-label="{cap}" style="color:{BONE};--sail:{RED}">{inner}</svg>'
             f'<figcaption>{cap}</figcaption></figure>')
-CUR_FULL = full(CUR_INNER, vb, f'Current: mark {MH:.0f} tall, pads 52 / 88')
-REF_FULL = full(REF_INNER, vb_r, f'Refined: mark {r_my1 - r_my0:.0f} tall (18u), pads {PL:.0f} / {PR:.0f}')
+CUR_FULL = full(CUR_INNER, vb, f'Before: mark {MH:.0f} tall, pads 52 / 88')
+REF_FULL = full(REF_INNER, vb_r, f'Shipped: mark {r_my1 - r_my0:.0f} tall (18u), pads {PL:.0f} / {PR:.0f}')
 
 def small(inner, v, h):
     return f'<svg viewBox="{v[0]} {v[1]} {v[2]} {v[3]}" height="{h}" style="color:{BONE};--sail:{RED};width:auto">{inner}</svg>'
-SMALLS = (f'<div class="smalls"><div>{small(CUR_INNER, vb, 56)}<span>current, 56 px tall</span></div><div>{small(REF_INNER, vb_r, 56)}<span>refined, 56 px tall</span></div>'
-          f'<div>{small(CUR_INNER, vb, 30)}<span>current, 30 px</span></div><div>{small(REF_INNER, vb_r, 30)}<span>refined, 30 px</span></div></div>')
+SMALLS = (f'<div class="smalls"><div>{small(CUR_INNER, vb, 56)}<span>before, 56 px tall</span></div><div>{small(REF_INNER, vb_r, 56)}<span>shipped, 56 px tall</span></div>'
+          f'<div>{small(CUR_INNER, vb, 30)}<span>before, 30 px</span></div><div>{small(REF_INNER, vb_r, 30)}<span>shipped, 30 px</span></div></div>')
 
 # ------------------------------------------------------------------ numbers for the tables
 A = BB['A']; Aw = A[1] - A[0]
@@ -268,7 +268,7 @@ footer{{padding-block:44px 64px;border-top:1px solid var(--line);color:var(--dim
 <div class="wrap">
 
 <section>
-  <span class="lab">Bangarang &middot; lockup review &middot; October 2026</span>
+  <span class="lab">Bangarang &middot; lockup review &middot; October 2026 &middot; shipped 14 Oct</span>
   <h1>The sail,<br>measured</h1>
   <p class="lead">Every number here is measured from the shipped files: cap {BB["B"][3]:.0f} units, stem {STEM:.0f}, mark {MH:.0f} tall by {MW:.0f} wide. The sail is already sized to the system. What is not quite right is the air around it.</p>
   <div class="verdict">
@@ -324,19 +324,19 @@ footer{{padding-block:44px 64px;border-top:1px solid var(--line);color:var(--dim
   <h2>The gap before<br>the sail is the<br>widest in the word</h2>
   <p class="lead">Optical gap between each pair of neighbours, in units. Red bars touch the sail. The outlined bars are the same word set with the typeface's own A, which is what a type designer judged right for that slot.</p>
   <div class="cols">
-    <div><h3>Current</h3>{BARS_CUR}</div>
+    <div><h3>Before</h3>{BARS_CUR}</div>
     <div><h3>Typeface's own A</h3>{BARS_BENCH}</div>
-    <div><h3>Refined</h3>{BARS_REF}</div>
+    <div><h3>Shipped</h3>{BARS_REF}</div>
   </div>
 </section>
 
 <section>
   <span class="lab">04 &middot; Proposal</span>
-  <h2>Current<br>vs refined</h2>
-  <p class="lead">Refined = mark snapped to 18u and the pads set so both gaps land 10% over the A's spacing: left pad {PL:.0f} (was 52), right pad {PR:.0f} (was 88). Letters and mark geometry unchanged. The small cut (header, footer, favicon) keeps its wider air; your earlier note about the R crowding at small sizes still holds.</p>
+  <h2>Before<br>vs shipped</h2>
+  <p class="lead">Shipped 14 October 2026: mark snapped to 18u and the pads set so both gaps land 10% over the A's spacing: left pad {PL:.0f} (was 52), right pad {PR:.0f} (was 88). Letters and mark geometry unchanged. The small cut (header, footer, favicon) keeps its wider air; your earlier note about the R crowding at small sizes still holds.</p>
   <div class="grid" style="display:grid;gap:16px;margin-top:28px">{CUR_FULL}{REF_FULL}</div>
   {SMALLS}
-  <div class="tbl"><table><thead><tr><th scope="col">Measure</th><th scope="col">Current</th><th scope="col">Refined</th><th scope="col">A in the slot</th></tr></thead><tbody>
+  <div class="tbl"><table><thead><tr><th scope="col">Measure</th><th scope="col">Before</th><th scope="col">Shipped</th><th scope="col">A in the slot</th></tr></thead><tbody>
     <tr><th scope="row">Mark height</th><td>{MH:.0f} (1.30 cap)</td><td>{r_my1 - r_my0:.0f} (18u, 1.29 cap)</td><td>cap 700</td></tr>
     <tr><th scope="row">Gap G to mark (optical)</th><td>{gm_c:.0f}</td><td>{gm_r:.0f}</td><td>{BENCH_GA:.0f}</td></tr>
     <tr><th scope="row">Gap mark to R (optical)</th><td>{mr_c:.0f}</td><td>{mr_r:.0f}</td><td>{BENCH_AR:.0f}</td></tr>
@@ -344,7 +344,7 @@ footer{{padding-block:44px 64px;border-top:1px solid var(--line);color:var(--dim
     <tr><th scope="row">Closest approach, G / R</th><td>{near_cur[0]:.0f} / {near_cur[1]:.0f}</td><td>{near_ref[0]:.0f} / {near_ref[1]:.0f}</td><td>119 / 72</td></tr>
     <tr><th scope="row">Lockup width</th><td>{vb[2]:.0f}</td><td>{vb_r[2]:.0f} ({(vb_r[2] / vb[2] - 1) * 100:.1f}%)</td><td>6171 (plain)</td></tr>
   </tbody></table></div>
-  <p class="lead dim" style="font-size:15px">If you approve it, it ships by changing three constants in <span class="num">tools/wordmark.py</span> (MARK_K and the display cut's pad_l, pad_r), regenerating the assets, hero and favicon, and redeploying. The candidate SVG is in <span class="num">docs/lockup-refined/</span>. Nothing on the site has changed.</p>
+  <p class="lead dim" style="font-size:15px">It shipped by changing three constants in <span class="num">tools/wordmark.py</span> (MARK_K and the display cut's pad_l, pad_r) and regenerating. The pre-change files are kept in <span class="num">docs/lockup-before/</span>. Header and footer use the small cut, whose pads did not change (its mark is the same 1.1% smaller).</p>
 </section>
 
 <footer>Measured by <span class="num">tools/proportions.py</span>; page built by <span class="num">tools/proportions_sheet.py</span>. Raster 2 px per unit, even-odd fill.</footer>

@@ -27,10 +27,10 @@ OVERSHOOT = 14      # round-letter overshoot allowance below the baseline
 # Two optical cuts. DISPLAY: hero, big uses. SMALL: header, footer, favicon (wider gaps in the mark so its three
 # pieces survive at ~16-32 px; looser tracking; more air on the right where the straight stem of the R meets the curve).
 CUTS = {
-    'display': dict(mark='mark-path.json',       track=0.000, pad_l=0.075, pad_r=0.125),
+    'display': dict(mark='mark-path.json',       track=0.000, pad_l=0.0297, pad_r=0.0907),   # 2026-10-14: gaps set +10% over the typeface's own A (was .075/.125); see docs/lockup-proportions.html
     'small':   dict(mark='mark-path-small.json', track=0.030, pad_l=0.090, pad_r=0.155),
 }
-MARK_K = 1.30       # mark height / cap height
+MARK_K = 18 / 14    # mark height / cap height: 18u tall on a 50-unit module (cap 14u, stem 3u, overhang 2u). Was 1.30; a 1.1% snap
 MARK_DROP = (MARK_K - 1) / 2   # fraction of cap height the mark hangs below the baseline: equal overhang above and below the letters
 
 # ---------------- the mark (one geometry per cut) ----------------

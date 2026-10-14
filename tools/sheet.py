@@ -191,7 +191,7 @@ a{{color:inherit}}
       <ul class="rules">
         <li><b>Display cut</b>: gaps as drawn. Hero, print, large uses, 48 px and up.</li>
         <li><b>Small cut</b>: wider gaps (2x), looser tracking, more air after the mark so the R never crowds it. Header, footer, favicon, anything under about 40 px.</li>
-        <li>The mark stands 1.3x the cap height and hangs equally above and below the letters.</li>
+        <li>The mark stands 18 units tall on a 50-unit module (cap 14, stem 3, overhang 2 each side) and hangs equally above and below the letters. Spacing was set by area: both gaps sit 10% over the typeface's own A.</li>
       </ul></div>
     <div><h3>Construction rules (set by the owner)</h3>
       <ul class="rules">

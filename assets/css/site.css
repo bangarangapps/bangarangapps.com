@@ -74,8 +74,8 @@ ul { padding: 0; list-style: none; }
 .hdr .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .mk { display: inline-flex; align-items: center; color: var(--fg); --sail: var(--sail-c, var(--accent)); text-decoration: none; }
 .mk { padding-block: 9px; }
-.mk svg { display: block; height: 25.8px; width: auto; }
-.foot .mk svg { height: 36.2px; }
+.mk svg { display: block; height: 25.5px; width: auto; }
+.foot .mk svg { height: 35.8px; }
 .nav { display: flex; align-items: center; gap: clamp(4px, 1.5vw, 16px); }
 .nav a { font-size: 15px; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; padding-inline: 10px; color: var(--dim); }
 .nav a:hover { color: var(--fg); }
