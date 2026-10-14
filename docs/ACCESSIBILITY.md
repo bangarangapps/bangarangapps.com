@@ -3,7 +3,7 @@
 Target: **WCAG 2.2 AA**, plus our own bar of 44 px hit areas.
 
 ## How it is checked (repeatable)
-1. **axe-core 4.10** on every page (`/`, `/contact/`, `/privacy/`, `/terms/`, 404) at 1280 and 390 px, in the *un-scrolled* state: inject `axe.min.js` from cdnjs and run `axe.run()`.
+1. **axe-core 4.10** on every page (`/`, `/contact/`, `/privacy/`, `/terms/`, `/refunds/`, 404) at 1280 and 390 px, in the *un-scrolled* state: inject `axe.min.js` from cdnjs and run `axe.run()`.
 2. `tools/a11y/custom-audit.js`: contrast of every text element in every color world (alpha blended on the real background), focus-ring contrast, hit areas, landmarks/headings/alt/lang.
 3. Reduced motion: page loaded with `matchMedia('(prefers-reduced-motion: reduce)')` forced true. No JS: scripts stripped.
 

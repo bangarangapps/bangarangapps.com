@@ -24,3 +24,6 @@
 
 ## Per-product header accent
 While a product panel is under the header, the sail and "Say hello" button take that product's own accent: SimpleInvite `#0f3fa8` (its CTA blue), fdbck `#d97706` (amber). Everywhere else: brand red. The SimpleInvite panel mark is the product's current envelope mark (copied from simpleinvite.app `svg.logo-card`), always black `#111`, never an accent color.
+
+## Policies and payments (Stripe site verification)
+Stripe's business-website check wants: business name, what is sold, customer-service contact, refund/dispute/cancellation policy, no password, no region blocks, not under construction. This site satisfies it with `/refunds/` (cancellation, refunds, disputes, tax, restrictions for both products), a "Products and payments" section in `/terms/`, and three contact addresses. Keep `/refunds/` in step with SimpleInvite's and fdbck's own terms (SimpleInvite: $5/event, $39/year, no auto-renew; fdbck: Pro subscription, cancel anytime, keep until period end). Anchor links (`#apps`, `#hello`...) land flush at the top (`scroll-margin-top`) so the header takes the target's color world.
