@@ -33,7 +33,7 @@ p{{margin:0 0 14px;max-width:62ch;color:var(--dim)}} .mono{{font-family:"JetBrai
 ul{{margin:0;padding-left:20px}} li{{margin-bottom:8px;color:var(--dim)}} li b{{color:var(--bone)}} .src{{width:100%;max-width:300px;height:auto;image-rendering:auto}}
 </style>
 <div class="wrap" style="padding-top:clamp(32px,5vw,72px)"><p class="mono" style="color:var(--glow)">Bangarang Apps, Inc. / mark v4</p><h1>The mark</h1>
-<p style="margin-top:20px">Traced 1:1 from the original artwork (<span class="mono">tools/source/mark-original.png</span>). It is never redrawn, stretched or re-coloured per piece. It stands in for the middle A of the name. Everything below is generated, so every format matches.</p></div>
+<p style="margin-top:20px">Built from the original artwork (<span class="mono">tools/source/mark-original.png</span>) as clean vectors. It is never redrawn, stretched or re-coloured per piece. It stands in for the middle A of the name. Everything below is generated, so every format matches.</p></div>
 
 <section><div class="wrap"><h2>Primary wordmark</h2>
 <div class="grid" style="grid-template-columns:1fr">{tile("t-ink hero-tile", WM, "on ink")}</div>
@@ -51,9 +51,9 @@ ul{{margin:0;padding-left:20px}} li{{margin-bottom:8px;color:var(--dim)}} li b{{
 <section><div class="wrap"><h2>One colour: any garment, any ground</h2>
 <div class="grid">{tile("t-bone", M, "ink on bone")}{tile("t-glow", M, "ink on glow")}{tile("t-ink", M, "glow on ink")}{tile("t-pers", M, "white on persimmon")}{tile("t-white", M, "ink on white")}{tile("t-forest", M, "glow on forest")}</div></div></section>
 
-<section><div class="wrap"><h2>Fidelity: source vs vector</h2>
-<div class="two"><div class="grid">{tile("t-bone", f'<img class="src" alt="Original raster" src="data:image/png;base64,{src}">', "original, 278 x 280 px")}{tile("t-bone", M, "traced vector")}</div>
-<div><ul><li><b>Method:</b> sub-pixel contour from the original's coverage, corners detected, least-squares cubic Bezier fit at 0.3 px tolerance.</li><li><b>Result:</b> 3 pieces, 114 curves, 99.1% area overlap with the original, 11 of 77,840 pixels differ by more than half a pixel.</li><li><b>Honest limit:</b> the original is 278 px tall, so its small edge wobbles are in the trace. They are invisible at web sizes and will show on a large print. A larger export from the Photoshop file traces cleaner (<span class="mono">python tools/trace.py</span>).</li></ul></div></div></div></section>
+<section><div class="wrap"><h2>Construction: source vs vector</h2>
+<div class="two"><div class="grid">{tile("t-bone", f'<img class="src" alt="Original raster" src="data:image/png;base64,{src}">', "original, 278 x 280 px")}{tile("t-bone", M, "constructed vector")}</div>
+<div><ul><li><b>Right edge:</b> cap and band edges sit on one straight line (51.5 degrees, apex to the swoosh's top-right corner). The band's top-right is a sharp corner on that line; the swoosh curve starts there.</li><li><b>Gaps:</b> identical, 11 px at source scale, constant along their length (measured 10.8 to 11.1 px). Each gap is an exact offset of the edge above it, so the pieces flow.</li><li><b>Points:</b> 11 Bezier segments for the whole mark, smooth except at true corners. A raw pixel trace needed 114 and was bumpy.</li><li><b>Fidelity:</b> mean 0.85 px from your original, max 3.1 px of 248 (1.3%). The 278 px original has wobble; this keeps its design, not its wobble.</li></</ul></div></div></div></section>
 
 <section><div class="wrap"><div class="two"><div><h2>Colour</h2><ul><li><b>Ink</b> #0b100d</li><li><b>Forest</b> #132119</li><li><b>Bone</b> #eee9da</li><li><b>Glow</b> #d6f24a. The mark's colour on dark grounds.</li></ul><p style="margin-top:14px">Type is Archivo 900. The mark is the only coloured letter.</p></div>
 <div><h2>Rules</h2><ul><li>Clear space: a quarter of the mark's height on every side.</li><li>Minimum: mark 16 px / 6 mm; wordmark 90 px / 25 mm wide.</li><li>One colour, or the mark in accent with letters in ink/bone. No gradients, outlines, shadows, rotation or skew.</li><li>Never redraw or re-typeset. Re-run the generator.</li></ul></div></div></div></section>

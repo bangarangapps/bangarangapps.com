@@ -7,7 +7,7 @@ Static site for Bangarang Apps, Inc. Plain HTML/CSS/JS, no build step, no depend
 - `assets/css/site.css` — all styles. Color is organised into `[data-world]` blocks.
 - `assets/js/site.js` — one rAF loop for scroll motion; respects `prefers-reduced-motion`
 - `docs/BRAND.md` — voice and visual rules. Read before editing copy or type.
-- `assets/brand/` + `tools/wordmark.py` — the mark. All logo files are generated (`tools/trace.py` then `tools/wordmark.py`); don't hand-edit. `docs/brand-board.html` shows every format.
+- `assets/brand/` + `tools/wordmark.py` — the mark. All logo files are generated (`tools/construct.py`, `tools/wordmark.py`, `tools/inject.py`); don't hand-edit. `docs/brand-board.html` shows every format.
 
 Deploy (Cloudflare Pages project `bangarangapps-com`):
 

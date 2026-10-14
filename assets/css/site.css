@@ -94,7 +94,7 @@ ul { padding: 0; list-style: none; }
   font-variation-settings: "wdth" var(--wd, 62), "wght" 900;
   padding-bottom: clamp(12px, 2vw, 28px);
 }
-.sa { max-width: none; display: inline-block; height: .688em; width: calc(.688em * 0.8725); margin-inline: .045em; vertical-align: baseline; fill: var(--accent); overflow: visible; }
+.sa { max-width: none; display: inline-block; height: .688em; width: calc(.688em * 0.8704); margin-inline: .045em; vertical-align: baseline; fill: var(--accent); overflow: visible; }
 .fit-wrap { display: inline-block; }
 .hw { display: inline-block; }
 @media (max-width: 640px) { .hw { display: block; } }

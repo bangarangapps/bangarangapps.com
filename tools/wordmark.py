@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generates every Bangarang brand asset from two sources of truth:
 
-  1. the designer's mark   tools/source/mark-original.png  --(tools/trace.py)-->  tools/mark-path.json
+  1. the designer's mark   tools/source/mark-original.png  --(tools/construct.py)-->  tools/mark-path.json
   2. Archivo (OFL) outlines at wght 900 / wdth 100 for the letters
 
 The mark replaces the middle A of BANGARANG. It is NEVER redrawn or stretched: uniform scale only.
