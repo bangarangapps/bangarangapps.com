@@ -82,7 +82,7 @@
         const p = clamp(-r.top / Math.max(1, r.height - vh));
         const lit = p * (words.length + 4);
         for (let i = 0; i < words.length; i++) {
-          words[i].style.opacity = (0.14 + 0.86 * clamp(lit - i)).toFixed(3);
+          words[i].style.opacity = (0.45 + 0.55 * clamp(lit - i)).toFixed(3);
         }
       }
     }

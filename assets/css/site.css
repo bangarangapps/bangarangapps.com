@@ -70,10 +70,11 @@ ul { padding: 0; list-style: none; }
 .hdr { position: fixed; inset: 0 0 auto 0; z-index: 50; height: var(--hdr); border-bottom: 1px solid var(--line); }
 .hdr .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .mk { display: inline-flex; align-items: center; color: var(--fg); --sail: var(--sail-c, var(--accent)); text-decoration: none; }
+.mk { padding-block: 9px; }
 .mk svg { display: block; height: 25.8px; width: auto; }
 .foot .mk svg { height: 36.2px; }
-.nav { display: flex; align-items: center; gap: clamp(16px, 3vw, 36px); }
-.nav a { font-size: 15px; font-weight: 500; text-decoration: none; padding-block: 12px; color: var(--dim); }
+.nav { display: flex; align-items: center; gap: clamp(4px, 1.5vw, 16px); }
+.nav a { font-size: 15px; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; padding-inline: 10px; color: var(--dim); }
 .nav a:hover { color: var(--fg); }
 .nav a.cta { color: var(--btn-fg); background: var(--btn-bg); padding-inline: 16px; font-weight: 600; }
 .nav a.cta:hover { background: var(--btn-hover); color: var(--btn-fg); }
@@ -97,10 +98,10 @@ ul { padding: 0; list-style: none; }
   border-top: 1px solid var(--line); padding-top: 20px;
 }
 .hero-line { margin-top: clamp(20px, 3vw, 40px); font-size: clamp(38px, 5.2vw, 84px); font-weight: 700; line-height: 1.02; letter-spacing: -.025em; max-width: 15ch; text-wrap: balance; color: var(--fg); font-variation-settings: "wdth" 88; }
-.cue { color: var(--dim); text-decoration: none; padding-block: 12px; }
+.cue { color: var(--dim); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
 .cue:hover { color: var(--fg); }
-.rm .hero { height: auto; min-height: 100svh; }
-.rm .hero-stick { position: relative; }
+.rm .hero, html:not(.js) .hero { height: auto; min-height: 100svh; }
+.rm .hero-stick, html:not(.js) .hero-stick { position: relative; }
 
 /* ---------- manifesto ---------- */
 .mf { position: relative; height: 340vh; height: 340svh; }
@@ -110,9 +111,10 @@ ul { padding: 0; list-style: none; }
   font-variation-settings: "wdth" 88; text-wrap: balance;
 }
 .mf-text em { font-style: normal; color: var(--accent); }
-.js .mf-text .w { opacity: .14; }
-.rm .mf { height: auto; padding-block: 120px; }
-.rm .mf-stick { position: relative; height: auto; padding-top: 0; }
+.js .mf-text .w { opacity: .45; }          /* floor keeps >=3.9:1 so the copy is readable at any scroll position */
+.mf-text em .w { opacity: 1 !important; }   /* the accent word never dims: red cannot reach 3:1 when faded */
+.rm .mf, html:not(.js) .mf { height: auto; padding-block: 120px; }
+.rm .mf-stick, html:not(.js) .mf-stick { position: relative; height: auto; padding-top: 0; }
 .rm .mf-text .w { opacity: 1 !important; }
 
 /* ---------- strip ---------- */
@@ -201,8 +203,8 @@ ul { padding: 0; list-style: none; }
 /* ---------- footer ---------- */
 .foot { padding-block: 40px 56px; border-top: 1px solid var(--line); }
 .foot-grid { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 28px 56px; }
-.foot-links { display: flex; gap: 8px 28px; flex-wrap: wrap; }
-.foot-links a { text-decoration: none; color: var(--dim); padding-block: 12px; font-size: 15px; }
+.foot-links { display: flex; gap: 4px 12px; flex-wrap: wrap; }
+.foot-links a { text-decoration: none; color: var(--dim); display: inline-flex; align-items: center; min-height: 44px; padding-inline: 10px; font-size: 15px; }
 .foot-links a:hover { color: var(--fg); }
 .foot .small { color: var(--dim); font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; margin-top: 12px; }
 
@@ -226,3 +228,6 @@ ul { padding: 0; list-style: none; }
 /* ---------- scroll reveal ---------- */
 .js:not(.rm) .rv { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; transition-delay: calc(var(--d, 0) * 90ms); }
 .js:not(.rm) .rv.in { opacity: 1; transform: none; }
+
+/* visually hidden, still announced */
+.sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
