@@ -10,3 +10,5 @@
 - Product screenshots (`assets/img/*.webp`) go stale when SimpleInvite/fdbck UI changes; re-capture.
 - 16/32 px favicon and shirt/merch mockups of the mark are untested.
 - fdbck's refund wording was written by us (no prior policy): Adam to confirm it is the policy he wants.
+
+**Pending decision:** `docs/lockup-proportions.html` (built by `tools/proportions_sheet.py`) proposes a refined display-cut lockup: mark snapped to 18u, pads 21/63 instead of 52/88 (gaps +10% over the typeface's own A instead of +25%). Candidate SVG in `docs/lockup-refined/`. Not shipped. To ship: set MARK_K=18/14 and the display cut's pad_l/pad_r in `tools/wordmark.py`, run wordmark.py + inject.py, bump `?v=`, `tools/deploy.sh`. Small cut unchanged.
