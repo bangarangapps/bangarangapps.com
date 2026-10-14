@@ -1,11 +1,16 @@
 # Bangarang Apps — brand
 
-**Who:** Bangarang Apps, Inc. Two founders, a crew of agents, building small sharp apps in categories that got comfortable. Current products: SimpleInvite, fdbck.
+**Who:** Bangarang Apps, Inc. A software studio building sharp, modern apps in categories that got comfortable. Current products: SimpleInvite, fdbck.
 
 **Voice:** light, quick, a little mischievous, never smug. Hints that we want to do it better and put some life back into a market, never a word against anyone. Short sentences. No filler sublines. Confident, not cheeky.
-- The name is the nod: "Bangarang!" with the glow exclamation mark. Never reference the film, never use pirate/nautical language ("ship" as in ship software is fine; "crew" sparingly).
+- The name is the nod. Never reference the film, never use pirate/nautical language ("ship" as in ship software is fine).
+- **Never state a headcount** (no "two of us", no "two founders") and **never frame the product line as small or finished** (no "two so far", "just two"). Say "Out now", not "two so far".
+- **Never mention agents, AI, vibe coding or similar anywhere on the site**, including product copy (fdbck's panel is written without it). Hint at modern tooling only: "modern tools", "the newest tools we can get our hands on".
+- **No exclamation mark in the brand.** The wordmark is plain BANGARANG.
 - Never name or criticise an incumbent. "Some corners of software got comfortable" is as pointed as it gets.
 - Agentic tooling is part of the story ("a crew of agents"), stated plainly.
+
+**Mark:** the middle A is a sail set: a jib and a main as two billowed blades, panel seams cut as real gaps, a boom for the crossbar. It must read as an A first. Not a pirate sail (no square rig, no flag). Built from Archivo 900 outlines + the hand-drawn A; regenerate with `tools/wordmark.py`. In the hero the sails fill and ease with scroll (`setSail` in site.js, geometry mirrors the Python). Favicon = the A alone, no seams, for legibility at 16px.
 
 **Visual:** one stylesheet, color in "worlds". Studio worlds: ink `#0b100d`, forest `#132119`, bone `#eee9da`, glow `#d6f24a`. Product sections wear the product's own identity: SimpleInvite = paper `#efeae0` + persimmon `#d8512f` + Young Serif/Hanken; fdbck = night `#0a0a0b` + amber `#d97706` + Outfit/DM Sans. Studio type: Archivo (variable width axis 62-125), JetBrains Mono for labels.
 - Motion is scroll-linked and horizontal/vertical only. No tilt, no skew, no stacked or overlapping objects, no fake materials (house rule). Reduced motion = static page.
