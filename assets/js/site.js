@@ -48,21 +48,6 @@
   let words = [];
   if (mfText && !reduce) { split(mfText); words = $$('.w', mfText); }
 
-  /* Letters know their distance from the mark (data-cx/cy written by tools/wordmark.py). */
-  let wave = [];
-  function prepWave() {
-    wave = [];
-    if (!hero || reduce) return;
-    const svg = $$('.hero-word svg', hero).find((s) => s.getBoundingClientRect().width > 0);
-    const mg = svg && svg.querySelector('.mg');
-    if (!mg) return;
-    const mx = +mg.dataset.cx, my = +mg.dataset.cy;
-    const ls = $$('.lt', svg).map((el) => ({ el, d: Math.hypot(+el.dataset.cx - mx, (+el.dataset.cy - my) * 0.7) }));
-    const max = Math.max(...ls.map((l) => l.d)) || 1;
-    ls.forEach((l) => { l.d /= max; });
-    wave = ls;
-  }
-
   /* ---------- the loop ---------- */
   let queued = false;
   const request = () => { if (!queued) { queued = true; requestAnimationFrame(tick); } };
@@ -84,18 +69,10 @@
     }
     if (reduce) return;
 
-    /* hero: the logo never changes shape. Scroll sends a wave of colour outward from the mark. */
+    /* hero: the logo is static. Only the eyebrow + statement drift, a touch faster than the pinned logo. */
     if (hero) {
       const r = hero.getBoundingClientRect();
-      if (r.bottom > 0) {
-        const p = clamp(-r.top / Math.max(1, r.height - vh));
-        hero.style.setProperty('--hp', p.toFixed(3));
-        const w = lerp(-0.3, 1.25, p), width = 0.32;
-        for (const l of wave) {
-          let k = clamp(1 - Math.abs(l.d - w) / width); k = k * k * (3 - 2 * k);
-          l.el.style.fill = k < 0.015 ? '' : `color-mix(in srgb, var(--accent) ${(k * 100).toFixed(1)}%, var(--fg))`;
-        }
-      }
+      if (r.bottom > 0) hero.style.setProperty('--hp', clamp(-r.top / Math.max(1, r.height - vh)).toFixed(3));
     }
 
     /* manifesto: words light up in reading order */
@@ -151,7 +128,6 @@
   }
 
   function refit() {
-    prepWave();
     if (reduce) $$('[data-fit]').forEach((el) => fit(el, 100));
     viewFits.forEach((el) => fit(el, reduce ? 100 : Number(el.dataset.wdthView.split(',')[0])));
     request();

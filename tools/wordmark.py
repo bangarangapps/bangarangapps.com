@@ -25,7 +25,7 @@ CAP = 688           # Archivo cap height, font units
 BASE = 700          # baseline y in the wordmark box
 SLOT_PAD = 52       # air either side of the mark inside the word
 MARK_K = 1.30       # mark height / cap height
-MARK_DROP = 0.08    # fraction of cap height the mark hangs below the baseline
+MARK_DROP = (MARK_K - 1) / 2   # fraction of cap height the mark hangs below the baseline: equal overhang above and below the letters
 
 # ---------------- the mark ----------------
 M = json.loads((ROOT/'tools'/'mark-path.json').read_text())
@@ -72,12 +72,12 @@ VB = f'0 {VY0} {total} {VH}'
 # a <use>d symbol is placed at the outer viewport's origin, so the outer box starts at 0,0 (the symbol's own viewBox carries the offset)
 (ROOT/'tools'/'wm-use.html').write_text(f'<svg viewBox="0 0 {total} {VH}" role="img" aria-label="Bangarang"><use href="#wm"/></svg>')
 
-# hero lockups: the same rigid logo; letters carry data-cx/cy so the page can colour them outward from the mark
-hd, _ = line('BANGSRANG', hero=True)
+# hero lockups: the same rigid logo, never animated
+hd, _ = line('BANGSRANG')
 (ROOT/'tools'/'hero-d.html').write_text(f'<svg class="hw-d" viewBox="{VB}" aria-hidden="true" focusable="false">{hd}</svg>')
 y2 = round(712 + 44 + MH - DROP)                     # line-2 baseline: the mark's head clears line 1 with air
-L1, w1 = line('BANG', 0, BASE, True)
-L2, w2 = line('SRANG', 0, y2, True)
+L1, w1 = line('BANG', 0, BASE)
+L2, w2 = line('SRANG', 0, y2)
 Wm = round(max(w1, w2)); Hm = round(y2 + max(12, DROP) + 6)
 (ROOT/'tools'/'hero-m.html').write_text(f'<svg class="hw-m" viewBox="0 0 {Wm} {Hm}" aria-hidden="true" focusable="false">{L1}{L2}</svg>')
 (ROOT/'tools'/'metrics.json').write_text(json.dumps({'aspect': ASPECT, 'bw': BW, 'bh': BH, 'vb_h': VH, 'vb_w': total}))

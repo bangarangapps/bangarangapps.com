@@ -80,13 +80,13 @@ ul { padding: 0; list-style: none; }
 @media (max-width: 640px) { .nav .opt { display: none; } }
 
 /* ---------- hero ---------- */
-.hero { position: relative; height: 185vh; height: 185svh; }
+.hero { position: relative; height: 150vh; height: 150svh; }
 .hero-stick {
   position: sticky; top: 0; height: 100vh; height: 100svh;
   display: flex; flex-direction: column; justify-content: flex-end;
   padding-top: calc(var(--hdr) + 24px); padding-bottom: clamp(24px, 4vw, 48px);
 }
-.hero-top { transform: translateY(calc(var(--hp, 0) * -36px)); margin-bottom: auto; padding-top: clamp(8px, 2vw, 28px); }
+.hero-top { transform: translateY(calc(var(--hp, 0) * -64px)); margin-bottom: auto; padding-top: clamp(8px, 2vw, 28px); }
 .hero-top .mono { color: var(--dim); }
 .hero-word { margin: 0; padding-bottom: clamp(16px, 2.4vw, 32px); color: var(--fg); --sail: var(--accent); }
 .hero-word svg { display: block; width: 100%; height: auto; max-width: none; overflow: visible; }
