@@ -89,7 +89,18 @@ ul { padding: 0; list-style: none; }
   position: sticky; top: 0; height: 100vh; height: 100svh;
   display: flex; flex-direction: column; justify-content: flex-end;
   padding-top: calc(var(--hdr) + 24px); padding-bottom: clamp(24px, 4vw, 48px);
+  overflow: clip;
 }
+/* a huge, faint sail behind the hero, bleeding off the right edge. Static: the logo is never animated. */
+.hero-sail {
+  --sh: min(94svh, 150vw);
+  position: absolute; z-index: 0; pointer-events: none;
+  height: var(--sh); width: calc(var(--sh) * .8704);
+  top: 50%; margin-top: calc(var(--sh) * -.5 + var(--hdr) / 2);
+  right: calc(var(--sh) * .8704 * -.30);
+  fill: var(--accent); opacity: .11;
+}
+.hero-stick > .wrap { position: relative; z-index: 1; }
 .hero-top { transform: translateY(calc(var(--hp, 0) * -64px)); margin-bottom: auto; padding-top: clamp(8px, 2vw, 28px); }
 .hero-top .mono { color: var(--dim); }
 .hero-word { margin: 0; padding-bottom: clamp(16px, 2.4vw, 32px); color: var(--fg); --sail: var(--sail-c, var(--accent)); }

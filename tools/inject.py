@@ -12,6 +12,11 @@ for name in ['index.html', 'privacy/index.html', 'terms/index.html', 'contact/in
     s, n2 = re.subn(r'<svg viewBox="[^"]*" role="img" aria-label="Bangarang"><use href="#wm"/></svg>', lambda m: use, s)
     assert n1 == 1 and n2 >= 1, (name, n1, n2)
     if name == 'index.html':
+        mk = (R/'assets/brand/mark.svg').read_text()
+        mpath = re.search(r'<path[^>]*/>', mk).group(0)
+        sail = f'<svg class="hero-sail" viewBox="0 0 {met["bw"]:.2f} {met["bh"]:.2f}" aria-hidden="true" focusable="false">{mpath}</svg>'
+        if 'class="hero-sail"' in s: s = re.sub(r'<svg class="hero-sail".*?</svg>', lambda m: sail, s, flags=re.S)
+        else: s = s.replace('<div class="hero-stick">', '<div class="hero-stick">\n      ' + sail, 1)
         s, n3 = re.subn(r'<h1 class="hero-word"[^>]*>.*?</h1>', lambda m: '<h1 class="hero-word" aria-label="Bangarang">' + hd + hm + '</h1>', s, flags=re.S)
         assert n3 == 1, 'hero h1'
     p.write_text(s)

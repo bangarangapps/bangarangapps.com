@@ -30,3 +30,6 @@ Stripe's business-website check wants: business name, what is sold, customer-ser
 
 ## Lockup proportions (shipped 2026-10-14)
 Module u = 50 units: cap 14u (700), stem 3u (150), mark 18u (900) tall = 6 stems, overhang 2u above and below the caps. Display-cut pads: 0.0297 / 0.0907 of cap, set so the optical (area) gap on each side of the mark is 10% over the typeface's own A (242 / 200 vs 220 / 182), keeping the typeface's own left:right asymmetry (1.21). Small cut (header, footer, favicon) keeps its wider pads. Measure with `tools/proportions.py`; full review with annotated blocks in `docs/lockup-proportions.html` (rebuilt by `tools/proportions_sheet.py`); the pre-change files are in `docs/lockup-before/`.
+
+## Hero sail
+One oversized sail (the display mark, `svg.hero-sail`, kept in sync by `tools/inject.py`) sits behind the hero type at 11% opacity in `--accent`, 94svh tall, bleeding 30% off the right edge. Static, `aria-hidden`, behind the text (`z-index:0`). The hero stage is `overflow: clip` so it never creates sideways scroll. Do not animate it and do not repeat it elsewhere.
