@@ -22,3 +22,6 @@
 **Gotchas learned:**
 - `.wrap` is margin-based. Never put a `padding` shorthand on an element that also carries `.wrap` (v1 bug: it zeroed the mobile gutter).
 - Cloudflare Browser Integrity Check was blocking Stripe's site-verification crawler; it is OFF on this zone. Leave it off.
+
+## Per-product header accent
+While a product panel is under the header, the sail and "Say hello" button take that product's own accent: SimpleInvite `#0f3fa8` (its CTA blue), fdbck `#d97706` (amber). Everywhere else: brand red. The SimpleInvite panel mark is the product's current envelope mark (copied from simpleinvite.app `svg.logo-card`), always black `#111`, never an accent color.
