@@ -6,7 +6,7 @@
 
 **Open items (none blocking):**
 - `www.bangarangapps.com` serves the page directly (no redirect to apex). Add a Cloudflare redirect rule (needs a token with rulesets edit, or Adam adds it).
-- OG image is brand red only; decide whether product accents belong in it.
+- OG card now built by `tools/og.py` (matches the hero). Social platforms cache old images; re-scrape with their debuggers if a stale card shows.
 - Product screenshots (`assets/img/*.webp`) go stale when SimpleInvite/fdbck UI changes; re-capture.
 - 16/32 px favicon and shirt/merch mockups of the mark are untested.
 - fdbck's refund wording was written by us (no prior policy): Adam to confirm it is the policy he wants.
