@@ -188,7 +188,9 @@ ul { padding: 0; list-style: none; }
 .panel-shot { will-change: transform; }
 .panel-shot img { width: 100%; height: auto; }
 
-.si .brandrow svg { color: #111; }
+.si .brandrow { font-size: 26px; gap: .306em; }          /* SimpleInvite's own lockup: card 1.177em tall, .306em gap, seated .04em low */
+.si .brandrow .name { font-size: inherit; }
+.si .brandrow svg.si-card { color: #111; height: 1.177em; width: auto; aspect-ratio: 153.3 / 178.85; position: relative; top: .04em; flex: none; }
 .si .brandrow .name { font-family: "Young Serif", Georgia, serif; }
 .si h2 { font-family: "Young Serif", Georgia, serif; font-weight: 400; font-size: clamp(40px, 5.6vw, 92px); line-height: 1.0; letter-spacing: -.01em; }
 .si .lede, .si .facts li, .si .btn { font-family: "Hanken Grotesk", system-ui, sans-serif; }

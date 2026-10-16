@@ -12,3 +12,5 @@
 - fdbck's refund wording was written by us (no prior policy): Adam to confirm it is the policy he wants.
 
 **Shipped 2026-10-14:** refined display-cut lockup (mark 18u, pads .0297/.0907). Review + measurements: `docs/lockup-proportions.html`; pre-change files: `docs/lockup-before/`. Small cut pads unchanged.
+
+**SimpleInvite mark (2026-10-16):** the homepage panel and brand sheet use SimpleInvite's new card mark and cobalt app icon. Source: their repo origin/main (`packages/design/src/brand/card.ts`, `icons/icon.svg`); re-sync with `python3 tools/si_mark.py` then `tools/deploy.sh`. Their favicon is changing separately; we do not use it.

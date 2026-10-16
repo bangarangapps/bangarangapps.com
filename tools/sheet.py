@@ -99,6 +99,13 @@ sizes = ''.join(
     f'</div><p>{s} px<br><span class="dim">{"small cut" if s <= 36 else "display cut"}</span></p></div>'
     for s in (16, 24, 32, 48, 96))
 
+_card = (B / 'simpleinvite-card.svg').read_text()
+SI_VB = re.search(r'viewBox="([^"]+)"', _card).group(1)
+SI_ATTRS = 'fill="none" stroke="currentColor" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" overflow="visible"'
+SI_INNER = _card[_card.index('>', _card.index('<svg')) + 1: _card.rindex('</svg>')]
+_icon = (B / 'simpleinvite-icon.svg').read_text()
+_icon_inner = _icon[_icon.index('>', _icon.index('<svg')) + 1: _icon.rindex('</svg>')]
+SI_ICON = f'<svg viewBox="0 0 512 512" width="64" height="64" role="img" aria-label="SimpleInvite app icon" style="border-radius:14px;flex:none">{_icon_inner}</svg>'
 page = f'''<title>Bangarang Brand Sheet</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Gabarito:wght@700&family=JetBrains+Mono:wght@400;500&family=Young+Serif&family=Hanken+Grotesk:wght@400..600&family=Outfit:wght@600;700&family=DM+Sans:wght@400;500&display=swap">
@@ -258,10 +265,10 @@ a{{color:inherit}}
   <p class="lead">Bangarang is the studio; each app is its own brand and wears its own colors and type on its panel. Identity never crosses between products.</p>
   <div class="grid g2">
     <article class="prod" style="background:{PAPER};color:{PAPER_INK}">
-      <div class="head"><svg width="48" height="35" viewBox="0 0 109.948043 79.373756" fill="#111" aria-hidden="true"><use href="#si-mark"/></svg><span style="font-family:'Young Serif',Georgia,serif;font-size:30px">SimpleInvite</span></div>
+      <div class="head"><svg viewBox="{SI_VB}" {SI_ATTRS} style="color:#111;height:1.177em;width:auto;aspect-ratio:153.3/178.85;font-size:32px;position:relative;top:.04em" aria-hidden="true">{SI_INNER}</svg><span style="font-family:'Young Serif',Georgia,serif;font-size:32px;margin-left:-.1em">SimpleInvite</span><span style="flex:1"></span>{SI_ICON}</div>
       <p style="font-family:'Hanken Grotesk',sans-serif">Paper <b>{PAPER}</b> &middot; ink <b>{PAPER_INK}</b> &middot; Young Serif display, Hanken Grotesk body.</p>
-      <div class="bar"><span class="dot"><i style="background:#111"></i>Mark: always black #111</span><span class="dot"><i style="background:{BLUE}"></i>CTA blue {BLUE}</span></div>
-      <p style="font-family:'Hanken Grotesk',sans-serif;font-size:15px">The mark is SimpleInvite's current envelope, taken from simpleinvite.app, and is never tinted with an accent. The blue is the header sail and CTA while this section is on screen.</p>
+      <div class="bar"><span class="dot"><i style="background:#111"></i>Mark: black #111</span><span class="dot"><i style="background:{BLUE}"></i>App icon: cobalt tile, white card</span><span class="dot"><i style="background:{BLUE}"></i>CTA blue {BLUE}</span></div>
+      <p style="font-family:'Hanken Grotesk',sans-serif;font-size:15px">The mark is SimpleInvite's card, a single-fold card that reads as S and I, set at their lockup proportions (card 1.177em tall, gap .306em, seated .04em low) and never tinted with an accent. The app icon is the card in white on a full-bleed cobalt tile. The blue is also the header sail and CTA while this section is on screen. Source: their repo, kept in sync by tools/si_mark.py.</p>
     </article>
     <article class="prod" style="background:{NIGHT};color:#fafafa">
       <div class="head"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g stroke="#fafafa" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16.247 7.761a6 6 0 0 1 0 8.478"/><path d="M19.075 4.933a10 10 0 0 1 0 14.134"/><path d="M4.925 19.067a10 10 0 0 1 0-14.134"/><path d="M7.753 16.239a6 6 0 0 1 0-8.478"/></g><circle cx="12" cy="12" r="2" fill="{AMBER}"/></svg><span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:30px;letter-spacing:-.03em">fdbck<span style="color:{AMBER}">.</span></span></div>
@@ -343,9 +350,5 @@ a{{color:inherit}}
 <footer>Generated from the shipped brand files by <span class="num">tools/sheet.py</span>. Source of truth: <span class="num">docs/BRAND.md</span>.</footer>
 </div>
 '''
-# the SimpleInvite mark is shared by <use>; define it once (current path from index.html)
-si = re.search(r'<svg width="44" height="32" viewBox="0 0 109\.948043 79\.373756"[^>]*><path d="([^"]+)"', (ROOT / 'index.html').read_text()).group(1)
-page = page.replace('<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="mk"',
-                    f'<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="si-mark" viewBox="0 0 109.948043 79.373756"><path fill-rule="evenodd" d="{si}"/></symbol><symbol id="mk"', 1)
 (ROOT / 'docs' / 'brand-sheet.html').write_text(page)
 print('wrote docs/brand-sheet.html', len(page))
