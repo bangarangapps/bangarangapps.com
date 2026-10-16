@@ -119,10 +119,11 @@ mh = 2000; mw = mh * D.ASPECT; gap = 380; W = tot_p; H = round(mh + gap + LET_BO
 (B/'lockup-stacked.svg').write_text(
     f'<svg {NS} viewBox="0 0 {W} {H}" fill="currentColor" role="img" aria-label="Bangarang" style="color:{BONE}">'
     f'{D.g((W-mw)/2, 0, mh)}<g transform="translate(0,{round(mh+gap)})">{plain}</g></svg>')
-# favicon: the SMALL mark, as large as the tile allows, on an ink square
-h = 29; w = h * S.ASPECT
+# favicon: the SMALL mark filling the whole canvas, on a TRANSPARENT background (2026-10-16: bigger, no tile). Brand red reads on a
+# light or a dark browser tab. The apple-touch icon below keeps its ink tile: iOS paints transparency black.
+h = 32; w = h * S.ASPECT
 (ROOT/'favicon.svg').write_text(
-    f'<svg {NS} viewBox="0 0 32 32"><rect width="32" height="32" fill="{INK}"/>' + S.g((32-w)/2, (32-h)/2, h, 'fill="%s"' % GLOW) + '</svg>')
+    f'<svg {NS} viewBox="0 0 32 32">' + S.g((32-w)/2, 0, h, 'fill="%s"' % GLOW) + '</svg>')
 # apple-touch / large icon: the DISPLAY mark
 h = 24; w = h * D.ASPECT
 (B/'icon-large.svg').write_text(
