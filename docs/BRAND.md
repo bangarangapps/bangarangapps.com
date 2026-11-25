@@ -40,3 +40,6 @@ Rules for new words: a mass noun that fits both "a little more ___ in them" and 
 
 ## Favicon
 `favicon.svg` is the small-cut sail in brand red, filling the whole 32x32 canvas on a transparent background (2026-10-16), so it reads on light and dark browser tabs. Linked as `favicon.svg?v=2` (bump to bust browser icon caches). The apple-touch icon keeps its ink tile because iOS paints transparency black.
+
+## Logo exports (2026-11-24)
+`assets/brand/export/`: `icon.png` (1024, profile pictures; sits inside a circle crop), `wordmark-on-ink.png` / `wordmark-on-bone.png` (2400 wide) plus matching SVGs with colours baked in (no CSS variables, so they open in Figma/Canva/Keynote). On bone the sail goes ink, per the brand sheet. Regenerate: `python3 tools/exports.py && tools/exports.sh` (gstack browser). Preview page: `assets/brand/exports.html`.

@@ -1,0 +1,56 @@
+<title>Bangarang logo exports</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* One column of export tiles on the brand's ink world; each tile shows the file at use size, then its name and pixel size. */
+:root {
+  --ink: #0c0a0a; --bone: #eee9da; --red: #ff1f2d; --dim: rgba(238,233,218,.62); --line: rgba(238,233,218,.14);
+  --head: "Archivo", system-ui, sans-serif; --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+body { background: var(--ink); color: var(--bone); font-family: var(--head); }
+.wrap { max-width: 880px; margin: 0 auto; padding-block: 40px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 40px; }
+h1 { font-size: clamp(28px, 5vw, 40px); font-weight: 800; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+.lede { color: var(--dim); font-size: 16px; line-height: 1.55; margin: 10px 0 0; max-width: 62ch; }
+section { display: grid; gap: 14px; }
+h2 { font-family: var(--mono); font-weight: 400; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); margin: 0; }
+.row { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
+figure { margin: 0; display: grid; gap: 8px; min-width: 0; }
+figure img { display: block; border: 1px solid var(--line); }
+.icon img { width: 240px; height: 240px; }
+.icon .circle img { border-radius: 50%; }
+.wm img { width: 100%; height: auto; }
+figcaption { font-family: var(--mono); font-size: 12px; color: var(--dim); line-height: 1.5; }
+figcaption b { color: var(--bone); font-weight: 400; }
+.note { font-size: 15px; line-height: 1.55; color: var(--dim); margin: 0; max-width: 62ch; }
+.note b { color: var(--bone); font-weight: 600; }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Bangarang logo exports</h1>
+    <p class="lede">Profile icon and the wordmark on a dark and a light background. Long-press an image to save it. Vector versions of each sit beside the PNGs in the site repo.</p>
+  </header>
+
+  <section class="icon">
+    <h2>Profile picture</h2>
+    <div class="row">
+      <figure><img src="export/icon.png" alt="Bangarang sail icon, red on ink"><figcaption><b>icon.png</b><br>1024 × 1024</figcaption></figure>
+      <figure class="circle"><img src="export/icon.png" alt="The same icon cropped to a circle"><figcaption><b>Circle crop preview</b><br>How X, LinkedIn, Instagram show it</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="wm">
+    <h2>Wordmark on dark</h2>
+    <figure><img src="export/wordmark-on-ink.png" alt="BANGARANG wordmark, bone letters and red sail on ink"><figcaption><b>wordmark-on-ink.png</b> · 2400 × 670 · bone letters, red sail, ink #0c0a0a</figcaption></figure>
+  </section>
+
+  <section class="wm">
+    <h2>Wordmark on light</h2>
+    <figure><img src="export/wordmark-on-bone.png" alt="BANGARANG wordmark, all ink on bone"><figcaption><b>wordmark-on-bone.png</b> · 2400 × 670 · ink letters and sail, bone #eee9da</figcaption></figure>
+  </section>
+
+  <p class="note">On the light background the sail is ink, not red. That's the brand sheet's rule for bone ("sail goes ink"), so the mark reads as one with the letters.</p>
+</div>
