@@ -21,7 +21,10 @@ figure { margin: 0; display: grid; gap: 8px; min-width: 0; }
 figure img { display: block; border: 1px solid var(--line); }
 .icon img { width: 240px; height: 240px; }
 .icon .circle img { border-radius: 50%; }
-.wm img { width: 100%; height: auto; }
+.wm img { width: 100%; height: auto; border: 0; }
+.tiles { display: grid; gap: 1px; }
+.t { padding: clamp(16px, 4vw, 36px); }
+.t.light { background: #ffffff; } .t.bone { background: var(--bone); } .t.black { background: #000000; } .t.ink { background: #1a1616; }
 figcaption { font-family: var(--mono); font-size: 12px; color: var(--dim); line-height: 1.5; }
 figcaption b { color: var(--bone); font-weight: 400; }
 .note { font-size: 15px; line-height: 1.55; color: var(--dim); margin: 0; max-width: 62ch; }
@@ -31,7 +34,7 @@ figcaption b { color: var(--bone); font-weight: 400; }
 <div class="wrap">
   <header>
     <h1>Bangarang logo exports</h1>
-    <p class="lede">Profile icon and the wordmark on a dark and a light background. Long-press an image to save it. Vector versions of each sit beside the PNGs in the site repo.</p>
+    <p class="lede">Profile icon, and the wordmark with a transparent background in a light-mode and a dark-mode version. Long-press an image to save it. Vector versions of each sit beside the PNGs in the site repo.</p>
   </header>
 
   <section class="icon">
@@ -43,14 +46,14 @@ figcaption b { color: var(--bone); font-weight: 400; }
   </section>
 
   <section class="wm">
-    <h2>Wordmark on dark</h2>
-    <figure><img src="export/wordmark-on-ink.png" alt="BANGARANG wordmark, bone letters and red sail on ink"><figcaption><b>wordmark-on-ink.png</b> · 2400 × 670 · bone letters, red sail, ink #0c0a0a</figcaption></figure>
+    <h2>Wordmark for light mode</h2>
+    <figure><div class="tiles"><div class="t light"><img src="export/wordmark-for-light-bg.png" alt="BANGARANG wordmark, ink letters and red sail, on white"></div><div class="t bone"><img src="export/wordmark-for-light-bg.png" alt="The same wordmark on bone"></div></div><figcaption><b>wordmark-for-light-bg.png</b> · 2400 × 369 · transparent · ink letters, red sail</figcaption></figure>
   </section>
 
   <section class="wm">
-    <h2>Wordmark on light</h2>
-    <figure><img src="export/wordmark-on-bone.png" alt="BANGARANG wordmark, all ink on bone"><figcaption><b>wordmark-on-bone.png</b> · 2400 × 670 · ink letters and sail, bone #eee9da</figcaption></figure>
+    <h2>Wordmark for dark mode</h2>
+    <figure><div class="tiles"><div class="t black"><img src="export/wordmark-for-dark-bg.png" alt="BANGARANG wordmark, bone letters and red sail, on black"></div><div class="t ink"><img src="export/wordmark-for-dark-bg.png" alt="The same wordmark on ink"></div></div><figcaption><b>wordmark-for-dark-bg.png</b> · 2400 × 369 · transparent · bone letters, red sail</figcaption></figure>
   </section>
 
-  <p class="note">On the light background the sail is ink, not red. That's the brand sheet's rule for bone ("sail goes ink"), so the mark reads as one with the letters.</p>
+  <p class="note">Both wordmarks have <b>transparent backgrounds</b>; the tiles behind them here are only to show them on light and dark surfaces. The sail is brand red in both.</p>
 </div>
