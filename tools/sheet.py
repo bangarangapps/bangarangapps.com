@@ -215,7 +215,7 @@ a{{color:inherit}}
   <p class="lead">Gabarito Bold outlines, cap height normalized, the mark replacing the middle A. Always set from the supplied files; never retype it in a font.</p>
   <div class="grid g2">
     <figure class="wmbox" style="background:{INK};color:{BONE};--sail:{RED}">{use("wd", VB_WD, "", "", "Bangarang, display cut")}<figcaption>Display cut &middot; on ink</figcaption></figure>
-    <figure class="wmbox" style="background:{BONE};color:{INK};--sail:{INK}">{use("wd", VB_WD, "", "", "Bangarang on bone")}<figcaption>On bone &middot; sail goes ink</figcaption></figure>
+    <figure class="wmbox" style="background:{BONE};color:{INK};--sail:{RED}">{use("wd", VB_WD, "", "", "Bangarang on bone")}<figcaption>On bone &middot; red sail, ink letters</figcaption></figure>
     <figure class="wmbox" style="background:{RED};color:{INK};--sail:{INK}">{use("wd", VB_WD, "", "", "Bangarang on red")}<figcaption>On red &middot; all ink</figcaption></figure>
     <figure class="wmbox" style="background:{INK};color:{BONE};--sail:{RED}">{use("ws", VB_WS, "", "max-width:420px", "Bangarang, small cut")}<figcaption>Small cut &middot; header, footer, under 40 px tall</figcaption></figure>
     <figure class="wmbox" style="background:{INK};color:{BONE}">{use("wp", VB_WP, "", "", "Bangarang plain, standard A")}<figcaption>Plain (standard A, no mark) &middot; text-only contexts</figcaption></figure>
